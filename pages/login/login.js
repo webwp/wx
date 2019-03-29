@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    codeStatus: true,
+    times: 90,
     loginType: '1',
     registerOptions: {
       verifyCode: false,
@@ -177,5 +179,25 @@ Page({
     this.WxValidate.addMethod('assistance', (value, param) => {
       return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
     }, '请勾选 《金奔腾通行证服务》')
+  },
+  // 获取验证码
+  onClickGetCode() {
+    this.setData({
+      codeStatus: false
+    })
+    const t = this
+    let index = setInterval(function() {
+      t.setData({
+        times: t.data.times - 1
+      })
+      if (t.data.times<=0) {
+        clearInterval(index)
+        t.setData({
+          times: 90,
+          codeStatus: true
+        })
+      }
+      
+    }, 1000)
   }
 })

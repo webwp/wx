@@ -15,7 +15,7 @@
                 <view class="tab-item {{loginType === '0' ? 'tab-item-active' : ''}}" hover-class="none" hover-stop-propagation="false" bindtap="switchType" data-index="0">
                     密码登录
                 </view>
-                <i style="left: {{loginType === '1' ? '2.4rem' : 'calc(50% + 2.4rem)'}}"></i>
+                <i style="left: {{loginType === '1' ? '90rpx' : 'calc(50% + 90rpx)'}}"></i>
             </view>
             <view class="form-cotent clearfix" hover-class="none" hover-stop-propagation="false">
                 <view 
@@ -30,10 +30,13 @@
                             <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                                 <i-icon type="mobilephone_fill" size="22" color="#ccc"/>
                             </view>
-                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ ruleForm.phone }}" data-index="phone" number/>
+                            <input class="form-item-side" style="width:250rpx" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ ruleForm.phone }}" data-index="phone" number/>
                             <view class="form-item-side" style="float:right" hover-class="none" hover-stop-propagation="false">
-                                <view class="codes" hover-class="none" hover-stop-propagation="false">
+                                <view class="codes" wx:if="{{codeStatus}}" bindtap="onClickGetCode" hover-class="none" hover-stop-propagation="false">
                                     获取验证码
+                                </view>
+                                <view class="codes color-disabled" wx:if="{{!codeStatus}}" bindtap="onClickGetCode" hover-class="none" hover-stop-propagation="false">
+                                    {{ times }} s
                                 </view>
                             </view>
                     </view>

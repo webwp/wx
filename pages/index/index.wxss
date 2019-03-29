@@ -19,3 +19,10 @@
 .usermotto {
   margin-top: 200px;
 }
+.pagetext { text-align: center; font-size: 32rpx; line-height: 50rpx}
+ image {
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  margin: 3rem auto 1rem;
+}

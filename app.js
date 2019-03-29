@@ -38,15 +38,8 @@ App({
     //   })
     // }
     // // 获取用户信息
-    if (isToken) {
-
-    } else {
-      if (wxGetSetting.default('userInfo')) {
-        wx.navigateTo({
-          url: './pages/login/login'
-        })
-      }
-    }
+    // wxGetSetting.default('userInfo')
+    
     // wx.getSetting({
     //   success: res => {
     //     if (res.authSetting['scope.userInfo']) {

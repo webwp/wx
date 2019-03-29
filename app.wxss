@@ -34,19 +34,19 @@ page {
 .font-size-rpx-32 { font-size: 32rpx}
 .font-w { font-weight: bold}
 
-.color-primary { color: #2d8cf0}
-.color-light-primary { color: #5cadff}
-.color-dark-primary { color: #2b85e4}
-.color-info { color: #2d8cf0}
-.color-success { color: #19be6b}
-.color-warning { color: #ff9900}
-.color-error { color: #ed3f14}
-.color-success { color: #19be6b}
+.color-primary { color: #2d8cf0!important}
+.color-light-primary { color: #5cadff!important}
+.color-dark-primary { color: #2b85e4!important}
+.color-info { color: #2d8cf0!important}
+.color-success { color: #19be6b!important}
+.color-warning { color: #ff9900!important}
+.color-error { color: #ed3f14!important}
+.color-success { color: #19be6b!important}
 
-.color-title { color: #1c2438}
-.color-content { color: #495060}
-.color-sub { color: #80848f}
-.color-disabled { color: #bbbec4}
+.color-title { color: #1c2438!important}
+.color-content { color: #495060!important}
+.color-sub { color: #80848f!important}
+.color-disabled { color: #bbbec4!important}
 
 .color-border { border: 1rpx solid #dddee1}
 .color-Background { color: #f8f8f9}

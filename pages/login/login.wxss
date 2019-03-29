@@ -17,7 +17,7 @@
   .tab-content {
     position: relative;
     margin-bottom: .6rem;
-    font-size: .8rem;
+    font-size: 32rpx;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -68,7 +68,8 @@
   }
   #form {
     position: relative;
-    margin: 10vh 15vw 0;
+    /* margin: 10vh 15vw 0; */
+    margin: 100rpx 100rpx 0;
  }
  .form {
     overflow: hidden;
@@ -77,7 +78,7 @@
     display: block;
     width: 30vw;
     padding-left: .88rem;
-    font-size: .8rem;
+    font-size: 36rpx;
     color: #333;
     border: 0;
     outline: 0;
@@ -112,14 +113,16 @@
 }
 .item-hide { display: none}
 .wrap .form-item-groud { float: left; width:70vw;}
-.form-item-list { font-size: .8rem; border-bottom: 1px solid #efefef;  padding: .5rem 0; overflow: hidden;}
+.form-item-list { font-size: 30rpx; border-bottom: 1px solid #efefef;  padding: .5rem 0; overflow: hidden;}
 .form-item-list .form-item-side { float: left;}
 .form-item-list input { width: 30vw;}
 
 .codes {
     position: relative;
     padding:  0 20rpx;
-    color: #ec6c00
+    color: #ec6c00;
+    font-size: 28rpx;
+    min-width: 60rpx;
 }
 .codes:after {
     content: "";

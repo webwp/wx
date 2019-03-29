@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
+  <!--<view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -9,5 +9,9 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+  </view>-->
+  <view class="pagetext" hover-class="none" hover-stop-propagation="false">
+    <image class="" src="http://wx.jbtcloud.cn/static/img/logo-new.65a27de.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+    广西金奔腾汽车科技有限公司
   </view>
 </view>

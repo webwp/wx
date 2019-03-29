@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/map/index",
     "pages/report/reportlist",
     "pages/report/reportdetail",
@@ -17,7 +18,6 @@
     "pages/register/register",
     "pages/mycar/mycar",
     "pages/user/user",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
