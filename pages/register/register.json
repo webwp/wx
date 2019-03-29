@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "i-input": "../../dist/input/index",
+        "i-icon": "../../dist/icon/index",
+        "i-button": "../../dist/button/index",
+        "i-checkbox": "../../dist/checkbox/index"
+    },
+    
+    "navigationBarTitleText": "通行证注册"
+}

@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "i-button": "../../dist/button/index",
+    "address": "../address/address"
+  },
+  "backgroundTextStyle":"light",
+  "navigationBarBackgroundColor": "#EC6C00",
+  "navigationBarTitleText": "检测桩",
+  "navigationBarTextStyle":"white"
+}

@@ -1,0 +1,188 @@
+<!--wxPile/pages\order/orderdetail.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="page-header" hover-class="none" hover-stop-propagation="false" style="color:#fff; padding: 0 36rpx">
+        <i-icon type="clock" size="64" style="float:left" cussize="64rpx" />
+        <view class="font-size-rpx-32" hover-class="none" hover-stop-propagation="false" style="margin-left:2rem;">
+            等待付款  (￥140.00)
+            <view class="font-size-rpx" selectable="false" space="false" decode="false" style="padding-top:8rpx">
+                剩余： 23时40分
+            </view>
+        </view>
+    </view>
+    <view class="page-content" hover-class="none" hover-stop-propagation="false">
+        <view class="car-garage" hover-class="none" hover-stop-propagation="false">
+            <view class="car-garage-name" hover-class="none" hover-stop-propagation="false">
+                <i-badge count="" text="已认证" i-class="badge-position" top="-10" right="-25" bg="#19be6b">
+                    <view class="demo-badge">北京奔马汽配城</view>
+                </i-badge>
+            </view>
+            <i-row i-class="font-size-rpx row-height">
+                <i-col span="10" i-class="col-class">
+                    <i-rate
+                        i-class="irate-size"
+                        size="16" 
+                        disabled="{{true}}"
+                        value="3.5">
+                        3.5
+                    </i-rate>
+                </i-col>
+                <i-col span="8" i-class="col-class">总订单：5560</i-col>
+                <i-col span="6" i-class="col-class txt-right">联系商家<i-icon type="mobilephone" color="#5cadff" size="22" /></i-col>
+            </i-row>
+            <i-row i-class="font-size-rpx row-height">
+                <i-col span="17" i-class="col-class">
+                    广西南宁市西乡塘区科创路金奔腾大夏
+                </i-col>
+                <i-col span="7" i-class="col-class txt-right">15.5Km<i-icon type="coordinates" color="#5cadff" size="22" /></i-col>
+            </i-row>
+        </view>
+        <!-- 模块信息 -->
+        <view class="page-content-model" hover-class="none" hover-stop-propagation="false">
+            <view class="model-list" hover-class="none" hover-stop-propagation="false">
+                <i-row i-class="model-list-item">
+                    <i-col span="12" i-class="col-class">服务方式</i-col>
+                    <i-col span="12" i-class="col-class txt-right">上门服务</i-col>
+                </i-row>
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">请选择预约服务时间</i-col>
+                    <i-col span="12" i-class="col-class txt-right">2019年10月21日15时</i-col>
+                </i-row>
+            </view>
+        </view>
+
+        
+        <!-- 模块信息 -->
+        <view class="page-content-model" hover-class="none" hover-stop-propagation="false">
+            <view class="font-size-rpx color-sub" hover-class="none" hover-stop-propagation="false" style="padding:32rpx 15px 0 15rpx">
+                <i-icon type="warning" color="#ec6c00" />商家报价仅对如下维修项目有效，新增维修项目免责
+            </view>
+            
+            <view class="model-list" hover-class="none" hover-stop-propagation="false">
+                <i-row i-class="model-list-item">
+                    <i-col span="12" i-class="col-class font-w">已选择项目</i-col>
+                    <i-col span="12" i-class="col-class txt-right color-success">共3项</i-col>
+                </i-row>
+            </view>
+            <!-- 项目 -->
+            <view class="pro-item" hover-class="none" hover-stop-propagation="false">
+                <view class="pro-name" hover-class="none" hover-stop-propagation="false">
+                     <i-row>
+                        <i-col span="16" i-class="col-class">
+                            <i-badge count="" text="项目一" i-class="badge-position" top="-10" right="-25" bg="#73b4c9">
+                                <view class="demo-badge font-w color-content">更换挡风玻璃</view>
+                            </i-badge>
+                        </i-col>
+                        <i-col span="8" i-class="col-class color-warning txt-right">￥1300.00</i-col>
+                    </i-row>
+                </view>
+                <view class="pro-item-list" hover-class="none" hover-stop-propagation="false">
+                    <i-row>
+                        <i-col span="10" i-class="col-class">挡风玻璃</i-col>
+                        <i-col span="6" i-class="col-class">x1</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥1200.00</i-col>
+                    </i-row>
+                    <i-row i-class="color-disabled">
+                        <i-col span="10" i-class="col-class">工时</i-col>
+                        <i-col span="6" i-class="col-class">0.5工时</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥10.00</i-col>
+                    </i-row>
+                </view>
+                
+                <view class="pro-item-list" hover-class="none" hover-stop-propagation="false">
+                    <i-row>
+                        <i-col span="10" i-class="col-class">更换雨刷</i-col>
+                        <i-col span="6" i-class="col-class">x1</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥1200.00</i-col>
+                    </i-row>
+                    <i-row i-class="color-disabled">
+                        <i-col span="10" i-class="col-class">工时</i-col>
+                        <i-col span="6" i-class="col-class">0.5工时</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥10.00</i-col>
+                    </i-row>
+                </view>
+            </view>
+            <!-- 项目 -->
+            <!-- 项目 -->
+            <view class="pro-item" hover-class="none" hover-stop-propagation="false">
+                <view class="pro-name" hover-class="none" hover-stop-propagation="false">
+                     <i-row>
+                        <i-col span="16" i-class="col-class">
+                            <i-badge count="" text="项目一" i-class="badge-position" top="-10" right="-25" bg="#73b4c9">
+                                <view class="demo-badge font-w color-content">更换挡风玻璃</view>
+                            </i-badge>
+                        </i-col>
+                        <i-col span="8" i-class="col-class color-warning txt-right">￥1300.00</i-col>
+                    </i-row>
+                </view>
+                <view class="pro-item-list" hover-class="none" hover-stop-propagation="false">
+                    <i-row>
+                        <i-col span="10" i-class="col-class">挡风玻璃</i-col>
+                        <i-col span="6" i-class="col-class">x1</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥1200.00</i-col>
+                    </i-row>
+                    <i-row i-class="color-disabled">
+                        <i-col span="10" i-class="col-class">工时</i-col>
+                        <i-col span="6" i-class="col-class">0.5工时</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥10.00</i-col>
+                    </i-row>
+                </view>
+                
+                <view class="pro-item-list" hover-class="none" hover-stop-propagation="false">
+                    <i-row>
+                        <i-col span="10" i-class="col-class">更换雨刷</i-col>
+                        <i-col span="6" i-class="col-class">x1</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥1200.00</i-col>
+                    </i-row>
+                    <i-row i-class="color-disabled">
+                        <i-col span="10" i-class="col-class">工时</i-col>
+                        <i-col span="6" i-class="col-class">0.5工时</i-col>
+                        <i-col span="8" i-class="col-class txt-right">￥10.00</i-col>
+                    </i-row>
+                </view>
+            </view>
+            <!-- 项目 -->
+        </view>
+        <!-- 模块信息 -->
+        <view class="page-content-model" hover-class="none" hover-stop-propagation="false">
+            <view class="model-list" hover-class="none" hover-stop-propagation="false">
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">材料总价</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥31000.00</i-col>
+                </i-row>
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">工时总价</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥1000.00</i-col>
+                </i-row>
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">上门服务</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥31000.00</i-col>
+                </i-row>
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">运费</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥1000.00</i-col>
+                </i-row>
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="12" i-class="col-class">服务费</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥31000.00</i-col>
+                </i-row>
+                <i-row i-class="model-list-item">
+                    <i-col span="12" i-class="col-class">返现</i-col>
+                    <i-col span="12" i-class="col-class txt-right">￥1000.00</i-col>
+                </i-row>
+                
+                <i-row i-class="model-list-item model-list-item-none-line">
+                    <i-col span="24" i-class="col-class txt-right"><rich-text style="display: inline-block; color:#ccc" nodes="{{html}}" bindtap="tap"></rich-text>   合计 <text class="color-warning font-w font-rpx-32">￥1000.00</text> </i-col>
+                </i-row>
+            </view>
+        </view>
+        
+        <!-- 模块信息 -->
+        <view class="page-content-model" hover-class="none" hover-stop-propagation="false">
+            <view class="txt-right" style="padding:15rpx 25rpx" hover-class="none" hover-stop-propagation="false">
+                <i-button bind:click="handleClick" type="ghost" inline size="small">取消订单</i-button>
+                <i-button bind:click="handleClick" type="ghost" inline size="small">去支付</i-button>
+            </view>
+        </view>
+    </view>
+</view>
+  

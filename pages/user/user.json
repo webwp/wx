@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index",
+    "i-icon": "../../dist/icon/index"
+  },
+  "backgroundTextStyle":"light",
+  "navigationBarBackgroundColor": "#EC6C00",
+  "navigationBarTitleText": "我的",
+  "navigationBarTextStyle":"white"
+}

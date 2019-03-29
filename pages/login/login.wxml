@@ -1,0 +1,83 @@
+<!--pages/login/login.wxml-->
+<view id="main" class="" hover-class="none" hover-stop-propagation="false">
+    <view class="info" hover-class="none" hover-stop-propagation="false">
+        <image class="" src="http://wx.jbtcloud.cn/static/img/logo-new.65a27de.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+        <view class="info-text" selectable="false" space="false" decode="false">
+            登录金奔腾通行证，享受专业、便捷、实惠的汽车服务
+        </view>
+    </view>
+    <form bindsubmit='submitForm'>
+        <view id="form" class="form" hover-class="none" hover-stop-propagation="false">
+            <view class="tab-content border-1px" hover-class="none" hover-stop-propagation="false">
+                <view class="tab-item {{loginType === '1' ? 'tab-item-active' : ''}}" hover-class="none" hover-stop-propagation="false" bindtap="switchType" data-index="1">
+                    短信登录
+                </view>
+                <view class="tab-item {{loginType === '0' ? 'tab-item-active' : ''}}" hover-class="none" hover-stop-propagation="false" bindtap="switchType" data-index="0">
+                    密码登录
+                </view>
+                <i style="left: {{loginType === '1' ? '2.4rem' : 'calc(50% + 2.4rem)'}}"></i>
+            </view>
+            <view class="form-cotent clearfix" hover-class="none" hover-stop-propagation="false">
+                <view 
+                    class="wrap clearfix" 
+                    hover-class="none" 
+                    hover-stop-propagation="false"
+                    style="{{boxPosition}}"
+                >
+                <!-- 短信登录 -->
+                <view class="form-item-groud" hover-class="none" hover-stop-propagation="false">
+                    <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
+                            <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
+                                <i-icon type="mobilephone_fill" size="22" color="#ccc"/>
+                            </view>
+                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ ruleForm.phone }}" data-index="phone" number/>
+                            <view class="form-item-side" style="float:right" hover-class="none" hover-stop-propagation="false">
+                                <view class="codes" hover-class="none" hover-stop-propagation="false">
+                                    获取验证码
+                                </view>
+                            </view>
+                    </view>
+                    <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
+                            <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
+                                <i-icon type="message" size="22" color="#ccc" />
+                            </view>
+                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输验证码" bindinput="onChangeInput" value="{{ruleForm.code}}" data-index="code" number/>
+                    </view>
+                </view>
+                <!-- 密码登录 -->
+                <view class="form-item-groud" hover-class="none" hover-stop-propagation="false">
+                    <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
+                            <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
+                                <i-icon type="mobilephone_fill" size="22" color="#ccc"/>
+                            </view>
+                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ruleForm.phone}}" data-index="phone" number/>
+                    </view>
+                    <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
+                            <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
+                                <i-icon type="lock" size="22" color="#ccc" />
+                            </view>
+                            <!-- <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="密码" number/> -->
+                            <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'password' }}" bindinput="onChangeInput" value="{{ruleForm.pwd}}" data-index="pwd" type="password" placeholder="请输入密码" placeholder-class="placeholder" />
+                            <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'text' }}" bindinput="onChangeInput" value="{{password.pwd}}" data-index="pwd" type="text" placeholder="请输入密码" placeholder-class="placeholder" />
+                            <i-icon type="browse" size="20" bindtap="changePwdType" color="{{ pwdStatus === 'text' ? '#ec6c00' : '#ccc'}}"  style="float:right"/> 
+                    </view>
+                </view>
+                
+                </view>
+            </view>
+            <view class="font-size-small txt-center" hover-class="none" hover-stop-propagation="false">
+                登录后您的通行证将与微信绑定
+            </view>
+            
+        </view>
+        <view class="" hover-class="none" style="margin: 0 12.5vw" hover-stop-propagation="false">
+            <i-button form-type='submit' type="warning" bind:click="submitForm" i-class="cus-btn-s">登录</i-button>
+        </view>
+        <view class="txt-center" style="font-size:.95rem" hover-class="none" hover-stop-propagation="false">
+            没有通行证？
+            <navigator class="color-error display-type-inline" target="" url="/pages/register/register" hover-class="navigator-hover" open-type="navigate">
+                去注册
+            </navigator>
+        </view>
+    </form>
+</view>

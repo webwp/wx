@@ -1,0 +1,2 @@
+<view wx:if="{{cussize === ''}}" class="i-class i-icon {{ type === '' ? '' : 'i-icon-' +  type }} {{ custom }}" style="font-size: {{ size }}px; {{ color ? 'color:' + color : '' }}"></view>
+<view wx:elif="{{cussize !== ''}}" class="i-class i-icon {{ type === '' ? '' : 'i-icon-' +  type }} {{ custom }}" style="font-size: {{ cussize }}; {{ color ? 'color:' + color : '' }}"></view>

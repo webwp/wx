@@ -1,0 +1,46 @@
+/* wxPile/pages\order/orderdetail.wxss */
+page {background: #f8f8f8;}
+.page-header {
+    height: 22vh;
+    background: #ec6c00
+}
+.page-content {
+    
+    display:inline;
+    min-height: 78vh
+}
+
+.car-garage { margin: -140rpx 25rpx 0 25rpx; border-radius: 32rpx; background: #fff; padding: 32rpx; min-height: 80rpx}
+.badge-position>.i-badge-count {
+    top: -14px;
+    right: -14px
+}
+.car-garage-name {
+    margin-bottom: 15rpx
+}
+.car-garage-name .demo-badge {
+    font-size: 32rpx;
+    font-weight: bold
+}
+.irate-size .i-rate-text {
+    font-size: 28rpx!important
+}
+.row-height {
+    padding: 16rpx 0;
+    line-height: 36rpx
+}
+.page-content-model {
+    margin-top: 25rpx;
+    background: #fff;
+    font-size: 32rpx
+}
+.model-list {
+    line-height: 84rpx;
+    padding: 20rpx 0 
+}
+.model-list-item { border-bottom: 1rpx solid #f1f1f1; padding: 0 25rpx}
+.model-list-item-none-line {
+    border-bottom: none
+}
+
+.pro-item { padding: 25rpx; line-height: 72rpx; border-bottom: 1px solid #f1f1f1 }

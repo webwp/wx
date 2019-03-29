@@ -1,0 +1,18 @@
+{
+    "component": true,
+    "usingComponents": {
+        "i-tabs": "../../dist/tabs/index",
+        "i-tab": "../../dist/tab/index",
+        "i-button": "../../dist/button/index",
+        "i-card": "../../dist/card/index",
+        "i-toast": "../../dist/toast/index",
+        "i-icon": "../../dist/icon/index",
+        "i-row": "../../dist/row/index",
+        "i-col": "../../dist/col/index",
+        "i-rate": "../../dist/rate/index"
+    },
+    "navigationBarTitleText": "报价信息",
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff   ",
+    "navigationBarTextStyle":"black"
+}

@@ -1,0 +1,5 @@
+/* wxPile/pages\order/order.wxss */
+
+page {
+    padding-top: 42px
+}

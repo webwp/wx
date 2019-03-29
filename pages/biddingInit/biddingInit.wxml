@@ -1,0 +1,54 @@
+<!--wxPile/pages\biddingInit/biddingInit.wxml-->
+<view class="currPage" hover-class="none" hover-stop-propagation="false">
+    <view class="nav section">
+        <view class="flex-wrp" style="flex-direction:row;">
+            <!-- <view class="flex-item item-other" bindtap="onClickToUser"><i-icon type="mine_fill" size="28" color="#EC6C00"/></view> -->
+            <view class="flex-item item-city">奥迪A4L 2018款 至尊版<i-icon type="unfold" /></view>
+            <!-- <view class="flex-item item-other"><i-icon type="dynamic" size="28" color="#EC6C00" /></view> -->
+        </view>
+    </view>
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <view class="list-group" hover-class="none" hover-stop-propagation="false">
+        <i-cell-group>
+            <i-cell title="服务类型" bindtap="handleOpen1" value="{{form.serviceType}}" is-link></i-cell>
+            <i-cell title="服务方式" bindtap="handleOpen2" value="{{form.serviceMode}}" is-link></i-cell>
+        </i-cell-group>
+    </view>
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <i-cell-group>
+        <i-cell title="问题描述">
+            <textarea
+                placeholder="详细描述您爱车的问题，有助于商家更精准的报价"
+                auto-focus
+                placeholder-style="color:#ccc;"
+            />
+            <view class="picUpload" hover-class="none" hover-stop-propagation="false">
+                <view class="picUpload-item" wx:for="{{imagesArr}}">
+                    <image src="{{item}}" data-index="{{index}}" bindtap='previewImg'></image>
+                </view>
+                <view class="picUpload-item" bindtap='takePictures'>
+                    <i-icon type="add" size="32" color="#ccc" />
+                </view>
+            </view>
+        </i-cell>
+        <i-cell title="检测报告" is-link url="/pages/map/index" value="请选择（非必填）"></i-cell>
+    </i-cell-group>
+    
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
+    <view class="list-group" hover-class="none" hover-stop-propagation="false">
+        <i-cell-group>
+            <i-cell title="一口价" url="/pages/map/index" value="">
+               <input class="one-price" placeholder="请输入价格" />
+            </i-cell>
+        </i-cell-group>
+    </view>
+
+    <i-button class="footerButton" bind:click="handleClick" type="error" long="true">提交</i-button>
+    
+    <i-action-sheet visible="{{ visible1 }}" actions="{{ serviceType }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
+    <i-action-sheet visible="{{ visible2 }}" actions="{{ serviceMode }}" show-cancel bind:cancel="handleCancel2" bind:click="handleClickItem2" />
+    <canvas canvas-id="attendCanvasId" style="width:300px;height:300px;position: absolute;left:-300px;top:-300px"></canvas>
+</view>

@@ -1,0 +1,41 @@
+<!--wxPile/pages\report/reportdetail.wxml-->
+<view class="main" id="main" hover-class="none" hover-stop-propagation="false">
+    <view class="list" hover-class="none" hover-stop-propagation="false">
+        <view class="item" hover-class="none" hover-stop-propagation="false">
+            <view class="report-item border-1px" hover-class="none" hover-stop-propagation="false">
+                <view class="info" hover-class="none" hover-stop-propagation="false">
+                    <view class="check-type" hover-class="none" hover-stop-propagation="false">
+                        
+                    </view>
+                </view>
+                <view class="detail" hover-class="none" hover-stop-propagation="false">
+                    <view class="detail-item" hover-class="none" hover-stop-propagation="false">
+                        <text class="" selectable="false" space="false" decode="false">
+                            fdsgdfgsdfg
+                        </text>
+                        <text class="" selectable="false" space="false" decode="false">
+                            监测系统
+                        </text>
+                    </view>
+                    <view class="detail-item" hover-class="none" hover-stop-propagation="false">
+                        <text class="" selectable="false" space="false" decode="false">
+                            fdsgdfgsdfg
+                        </text>
+                        <text class="" selectable="false" space="false" decode="false">
+                            监测系统
+                        </text>
+                    </view>
+                    <view class="detail-item" hover-class="none" hover-stop-propagation="false">
+                        <text class="" selectable="false" space="false" decode="false">
+                            fdsgdfgsdfg
+                        </text>
+                        <text class="" selectable="false" space="false" decode="false">
+                            监测系统
+                        </text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+  

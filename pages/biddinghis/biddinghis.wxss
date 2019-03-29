@@ -1,0 +1,38 @@
+/* wxPile/pages\biddingInit/biddingInit.wxss */
+.nav { height: 6vh; background:#fff; line-height: 6vh}
+.flex-wrp {display: flex;display: -webkit-flex;flex-direction:row; text-align: center}
+.flex-item {flex-grow:3}
+.item-city {width:80vw; color:#ec6c00 }
+.item-other { width: 20vw;}
+
+.picUpload {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    /* align-content: space-between; */
+}
+.picUpload-item {
+    flex: 0 0 22%;
+    box-sizing: border-box;
+    height: 160rpx;
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+    border:1px solid #dbdbdb;
+    text-align: center;
+    display:flex;
+    justify-content:center;
+    align-items:Center;
+
+    border-radius: 10rpx;
+}
+.currPage {padding: 6vh 0; }
+.section {position: fixed; top:0; width:100vw;z-index: 666;}
+.picUpload-item .text { display: block!important}
+.picUpload-item image { height: 160rpx;  width: 160rpx;}
+.footerButton {position:fixed; bottom: 0;width: 100vw;}
+.i-btn-small {
+    height:32px!important;
+    line-height:32px!important;
+}
+    

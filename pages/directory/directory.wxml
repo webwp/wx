@@ -1,0 +1,55 @@
+<!--directory.wxml-->
+<view class="container">
+  <i-panel title="添加地址">
+      <i-input type="text" title="姓名" value="{{ addAddress.name }}" maxlength="300" placeholder="请输入姓名" field="name" bind:change="handleInputChange"/>
+      <i-input type="number" title="手机号码" value="{{ addAddress.phone }}" maxlength="300" field="phone" placeholder="请输入手机号码" bind:change="handleInputChange"/>
+      <i-input type="text" title="省市区" value="{{ addAddress.address }}" maxlength="300" field="address" placeholder="请选择省市区" bindtap="selectDistrict" disabled/>
+      <i-input type="textarea" title="详细地址" value="{{ addAddress.addressDetail }}" maxlength="300" field="addressDetail" placeholder="请输入详细地址" bind:change="handleInputChange"/>
+      <!-- <i-input type="number" right title="kksks" value="{{ value0 }}" maxLength="50" title="用户姓名"/>
+      <i-input value="{{ value0 }}" title="联系电话" maxLength="100"/>
+      <i-input value="{{ addAddress.address }}" title="省市区" bindtap="selectDistrict" maxLength="2" placeholder="省市区" disabled  bind:change="handleInputChange" data-field="address" right/>
+      <i-input value="{{ addAddress.addressDetail }}" type="textarea" title="详细地址" placeholder="请输入详细地址(最多50字)" maxlength="50"/> -->
+  </i-panel>
+  <!-- <view style="position:fixed ;top:40%;box-sizing:border-box;padding:20rpx;text-align:center;width:100%">
+    <view style="padding-bottom:20rpx">{{areaInfo}}</view>
+    <button bindtap="selectDistrict">选择城市</button>
+  </view> -->
+  <view class="" hover-class="none" hover-stop-propagation="false" style="margin:60rpx 40rpx">
+    <i-button bind:click="handleClickAddNewAdress" type="warning">提交</i-button>
+  </view>
+</view>
+
+
+<view class="dialog-mask " style="visibility:{{isVisible ? 'visible': 'hidden'}}" bindtap="hideMenuTap " />
+<!--状态选择-->
+<!--wxss样式实现方式-->
+<!--<view wx:if="{{menuType==1}} " class="state-menu {{isVisible? 'show': 'hidden'}} " style="visibility:{{isVisible ? 'visible': 'hidden'}} ">-->
+<!--api动画方式-->
+
+
+
+
+<view class="dialog-mask " style="z-index:11;visibility:{{addressMenuIsShow ? 'visible': 'hidden'}}" bindtap="hideCitySelected" />
+<!--城市三级联动-->
+<!--使用动画时不能wx:if="{{city.length>0&&isVisible}}" ，不能hidden=''属性否则无动画效果-->
+<view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
+  <view style="height:10% ;width:95%;margin-top:10rpx">
+    <text catchtap="cityCancel">取消</text>
+    <text style="float: right" catchtap="citySure">确定</text>
+  </view>
+  <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+  <picker-view style="width: 100%; height: 300px;" bindchange="cityChange" value="{{value}}" wx:key="">
+    <picker-view-column>
+      <view wx:for="{{provinces}}" class="picker-item">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{citys}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{areas}}" class="picker-item" wx:key="">
+        {{item.name}}</view>
+    </picker-view-column>
+  </picker-view>
+</view>

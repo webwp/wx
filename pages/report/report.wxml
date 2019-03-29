@@ -1,0 +1,38 @@
+<!--wxPile/pages\report/report.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="tab-cus" hover-class="none" hover-stop-propagation="false">
+        <i-tabs current="{{ current }}" bindchange="handleChange" color="#ec6c00">
+            <i-tab wx:for="{{ tabType }}" key="tab{{ index }}" title="{{ item }}" id="tab{{ index }}"  wx:key="{{ index }}"></i-tab>
+        </i-tabs>
+    </view>
+
+    <view wx:for="{{ tabType }}" wx:if="{{ current === 'tab' + index ? true : false }}" wx:key="index" class='tab1'>
+       <view wx:for="{{resData}}" class="reportList" hover-class="none" hover-stop-propagation="false">
+            <i-row>
+                <i-col span="12" i-class="col-class">
+                    {{ item.carNumber }} 
+                </i-col>
+                <i-col span="12" i-class="col-time">
+                    <text class="time">{{ item.createTime }}</text>
+                </i-col>
+            </i-row>
+            <view class="i-col-content font-color-small" selectable="false" space="false" decode="false">
+                {{ item.content }}
+            </view>
+            <i-row>
+                <i-col span="12" i-class="col-size {{ item.status === 0 ? 'color-success':'color-error'}}">
+                    {{ item.report}}
+                </i-col>
+                <i-col span="12" i-class="col-time">
+                   <navigator class="nav-btn" target="" url="/pages/biddingInit/biddingInit" hover-class="navigator-hover" open-type="navigate">
+                        发起竞价
+                    </navigator>
+                </i-col>
+            </i-row>
+       </view>
+    </view>
+    <view class="" style="padding:0 20px" hover-class="none" hover-stop-propagation="false">
+        <i-divider content="加载已经完成,没有其他数据" lineColor="#dbdbdb"></i-divider>
+    </view>
+    <i-toast id="toast" />
+</view>

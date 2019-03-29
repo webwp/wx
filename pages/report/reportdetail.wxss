@@ -1,0 +1,109 @@
+/* wxPile/pages\report/reportdetail.wxss */
+
+.list {
+    padding-top: .2rem;
+    margin: 0 .24rem;
+}
+.item {
+    border-radius: .2rem;
+    background-color: #fff;
+    margin-bottom: .3rem;
+    -moz-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.14); 
+    -webkit-box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.14); 
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.14);
+}
+.card {
+    position: relative;
+    height: 1.42rem;
+    background: linear-gradient(to right, #ff930b 30%, #ff5100 70%);
+    border-radius: .2rem .2rem 0 0;
+}
+.card h2 {
+    font-size: .3rem;
+    padding: .36rem 0 .14rem 1.4rem;
+    color: #fff;
+}
+.card p {
+    font-size: .24rem;
+    padding: 0 .2rem .14rem 1.4rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.car-logo {
+    position: absolute;
+    top: .18rem;
+    left: .2rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: .2rem;
+    background-color: #fff;
+}
+.check-type {
+    position: absolute;
+    top: .2rem;
+    left: 0;
+    width: .72rem;
+    height: .72rem;
+    background-size: .72rem .72rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.more {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: .15rem;
+    height: .3rem;
+    background-size: .15rem .3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(~assets/images/more-right.png);
+}
+.info {
+    position: relative;
+    padding: .24rem 0 .3rem 0;
+}
+.info h2 {
+    font-weight: 400;
+    font-size: .3rem;
+    color: #333;
+    margin: .05rem 0 .1rem .92rem;
+}
+.info p {
+    font-size: .20rem;
+    color: #999;
+    margin-left: .92rem;
+}
+.info span {
+    color: #ec6c00;
+}
+.detail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 .3rem;
+}
+.detail-item {
+    text-align: center;
+}
+.detail-item h2 {
+    font-family: 'num';
+    font-weight: 400;
+    font-size: .4rem;
+    color: #ec6c00;
+    margin-bottom: .1rem;
+}
+.detail-item p {
+    font-size: .24rem;
+    color: #333;
+}
+.report-item {
+    padding: .24rem 0 .2rem;
+    margin: 0 .2rem;
+    border-bottom: 1px solid #f6f6f6;
+}

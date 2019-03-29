@@ -1,0 +1,36 @@
+<!--wxPile/pages\mycar/mycar.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="list" hover-class="none" hover-stop-propagation="false">
+        <view class="item clearfix" hover-class="none" hover-stop-propagation="false">
+            <view class="cardInfo border-1px" hover-class="none" hover-stop-propagation="false">
+                <image src="http://static.jbt315.com/pic/brand/logo/140.jpg" alt="图片" class="car-logo"></image>
+                <view class="car-number">桂A099T2</view>
+                <view class="car-series">艾瑞泽7 2015款 1.5T 手动致尚版</view>
+            </view>
+            <view class="button report" hover-class="none" hover-stop-propagation="false">
+                <i-icon type="createtask" />
+                检测报告
+            </view>
+            <view class="button delete" hover-class="none" hover-stop-propagation="false">
+                <i-icon type="trash" />
+                删除
+            </view>
+        </view>
+        <view class="item clearfix" hover-class="none" hover-stop-propagation="false">
+            <view class="cardInfo border-1px" hover-class="none" hover-stop-propagation="false">
+                <image src="http://static.jbt315.com/pic/brand/logo/140.jpg" alt="图片" class="car-logo"></image>
+                <view class="car-number">桂A099T2</view>
+                <view class="car-series">艾瑞泽7 2015款 1.5T 手动致尚版</view>
+            </view>
+            <view class="button report" hover-class="none" hover-stop-propagation="false">
+                <i-icon type="createtask" />
+                检测报告
+            </view>
+            <view class="button delete" hover-class="none" hover-stop-propagation="false">
+                <i-icon type="trash" />
+                删除
+            </view>
+        </view>
+        <i-button bind:click="handleClick" type="warning" i-class="cus-btn-s">添加车辆</i-button>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+/* wxPile/pages\report/report.wxss */
+.reportList {
+    background: #fff; padding: 32rpx 0 32rpx 32rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+.time { font-size: .8rem; color: #ccc;margin-right: 12.5rpx}
+.col-time {text-align: right}
+.i-col-content {font-size: .8rem; line-height: 3rem }
+.col-result {font-size: .8rem}
+.col-size {font-size: .9rem}
+page {
+    padding-top: 42px
+}
+

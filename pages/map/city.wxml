@@ -1,0 +1,4 @@
+<!--wxPile/pages\map/city.wxml-->
+<view class='wrapper'> 
+  <address my-city="北京" data="{{city}}" binddetail="bindtap"></address>
+ </view> 

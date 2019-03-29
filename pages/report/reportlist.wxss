@@ -1,0 +1,120 @@
+/* wxPile/pages\report/reportlist.wxss */
+
+.list {
+    position: relative;
+    padding-top: 2rem;
+    overflow: scroll;
+    padding-bottom: .5rem;
+  }
+  .carInfo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6666;
+    width: 100%;
+    padding: 0.4rem .24rem .35rem;
+    background-color: #ec6c00;
+    color: #fff;
+    font-size: 0;
+  }
+  .carInfo img {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: .2rem;
+    vertical-align: middle;
+    background-color: #fff;
+  }
+  .cardDetail {
+    display: inline-block;
+    font-size: 0;
+    margin-left: .2rem;
+    vertical-align: middle;
+  }
+  .cardDetail h2 {
+    font-size: .32rem;
+    margin-bottom: .1rem;
+  }
+  .cardDetail p {
+    font-size: .28rem;
+    line-height: .32rem;
+    width: 5.3rem;
+  }
+  .report-item {
+    margin: 0 .2rem;
+    border-bottom: 1px solid #f6f6f6;
+    background-color: #fff;
+    border-radius: .2rem;
+    margin-bottom: .2rem;
+    padding: 0 .24rem .2rem;
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.14); 
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.14); 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.14);
+    }
+
+    .info {
+        position: relative;
+        padding: .2rem 0 .3rem 0; 
+    }
+    .check-type {
+        position: absolute;
+        top: .2rem;
+        left: 0;
+        width: .72rem;
+        height: .72rem;
+        background-size: .72rem .72rem;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .info h2 {
+        font-weight: 400;
+        font-size: .28rem;
+        color: #333;
+        vertical-align: middle;
+        margin: .05rem 0 .1rem .92rem;
+      }
+      .info p {
+        font-size: .20rem;
+        color: #999;
+        margin-left: .92rem;
+      }
+      .info span {
+        color: #ec6c00;
+      }
+      .more {
+        display: inline-block;
+        width: .15rem;
+        height: .24rem;
+        vertical-align: top;
+        margin-left: .3rem;
+        background-size: .15rem .24rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(~assets/images/more-right.png);
+      }
+    
+    .detail {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding: 0 .3rem;
+    }
+    .detail-item {
+      text-align: center; 
+    }
+    .detail-item h2 {
+        font-family: 'num';
+        font-weight: 400;
+        font-size: .4rem;
+        color: #ec6c00;
+        margin-bottom: .1rem;
+      }
+      p {
+        font-size: .24rem;
+        color: #333;
+      }
+
+  .no-border-bottom {
+    border-bottom: 0 !important;
+   }

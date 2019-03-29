@@ -1,0 +1,7 @@
+<!--wxPile/pages\addrManagement/index.wxml-->
+
+<view class="content" hover-class="none" hover-stop-propagation="false">
+    <navigator class="" target="" url="/pages/directory/directory" hover-class="navigator-hover" open-type="navigate">
+        新增地址
+    </navigator>
+</view>

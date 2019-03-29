@@ -1,0 +1,60 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="nav section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item item-other" bindtap="onClickToUser"><navigator url="/pages/user/user"></navigator><i-icon type="mine_fill" size="28" color="#EC6C00"/></view>
+      <view class="flex-item item-city">
+        <navigator class="" target="" url="/pages/map/city" hover-class="navigator-hover" open-type="navigate">
+          {{ cityInfo.city }}<i-icon type="unfold" color="#ec6c00" size="22" />
+        </navigator>
+        <!-- <address my-city="南宁市" data="{{city}}" binddetail="bindtap"></address> -->
+      </view>
+      <view class="flex-item item-other"> 
+        <navigator class="" target="" url="/pages/biddingInit/biddingInit" hover-class="navigator-hover" open-type="navigate">
+          <i-icon type="dynamic" size="28" color="#EC6C00" />
+        </navigator> 
+      </view>
+    </view>
+  </view>
+  <map class="map" latitude="{{curPosition.latitude}}" longitude="{{curPosition.longitude}}" polyline="{{polyline}}" show-location show-compass enable-zoom enable-scroll>
+    <cover-view class="mapTopTip" scroll-top="0" hidden="{{isShow}}">
+      <cover-view class="mapTopTip-left"></cover-view>
+      <cover-view class="mapTopTip-right" scroll-top="0">
+        <cover-view>南宁市西乡塘区火炬大侠县山口附近</cover-view>
+        <cover-view class="mapTopTip-m">
+          <cover-view style="float:left; line-height: 64rpx">距离还有500米</cover-view>
+          <button bindtap="onClickHandlerStartMap" style="width: 100px; display:inline-block; float:right" size="mini">开始导航</button>
+        </cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view class="controls">
+      <cover-view class="controls-item controls-left controls-radius">
+        <cover-image class="icon-avatar" src="../assets/images/1.png" mode="cover"></cover-image>
+      </cover-view>
+      <cover-view class="controls-item controls-center">
+        <!-- <button
+          type="default"
+          bindtap="onClickHandler"
+          size="10px"
+          i-class="cus-btn-map"
+          hidden="{{!isShow}}"
+        >
+          最近的检测桩
+        </button> -->
+        <cover-view bind:click="handleClickss" type="warning" size="small" i-class="cus-btn-map">最近的检测桩</cover-view>
+      </cover-view>
+      <cover-view class="controls-item controls-right controls-radius">
+        <cover-image class="icon-avatar" src="../assets/images/2.png" mode="cover"></cover-image>
+      </cover-view>
+    </cover-view>
+  </map>
+  <form bindsubmit="formSubmit">
+    <!--输入起点和目的地经纬度坐标，格式为string格式-->
+    <!--起点输入框,同终点，不填默认当前位置-->
+    <label>起点坐标：<input style="border:1px solid #000;" name="start"></input></label>
+    <!--终点输入框,例：39.984060,116.307520-->
+    <label>终点坐标：<input style="border:1px solid #000;" name="dest"></input></label> 
+    <!--提交表单数据-->
+    <button form-type="submit">路线规划</button>
+</form>
+</view>

@@ -1,0 +1,9 @@
+/* wxPile/pages\priceinfo/index.wxss */
+.page-tip { line-height: 96rpx; background: #fa6b6b; text-align: center; color: #fff}
+.time-type { display: inline; padding: 10rpx; border-radius: 10rpx; background: #fff; color:#666; margin: 10rpx}
+
+.page-list { background: #fff; padding: 15rpx 20rpx; margin-bottom: 20rpx}
+.page-list-item { line-height: 72rpx}
+.item-status { background: #ff0000; margin-right: -20rpx; color:#fff; padding:5rpx 10rpx; border-top-left-radius: 30rpx; border-bottom-left-radius: 30rpx}
+.item-service { border: 1px solid #2a8fcc; color:#2a8fcc; line-height: 1rem; border-radius: 5rpx; padding:2rpx 5rpx; margin-left: 10rpx}
+.rate-item { margin-top: -10rpx !important; margin-right: 30rpx!important}
