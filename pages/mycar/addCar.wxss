@@ -1,0 +1,185 @@
+/* wxPile/pages\mycar/addCar.wxss */
+.content p {
+    font-size: .28rem;
+    color: #333;
+    padding-bottom: .2rem;
+}
+.car-num .item {
+    float: left;
+    width: 70rpx;
+    height: 74rpx;
+    margin-right: 14rpx;
+    border: 1px solid #dedede;
+    border-radius: 10rpx;
+    text-align: center;
+    font-size: 34rpx;
+    line-height: 74rpx;
+    color: #333;
+}
+.car-num .item-active {
+    border-color: #ec6c00;
+}
+.car-num .item-last {
+    border-style: dotted;
+    margin-right: 0;
+    background-size: .2rem .2rem;
+    background-repeat: no-repeat;
+    background-position: center .15rem;
+    /* background-image: url(~assets/images/plus.png); */
+    
+}
+.car-num .item-last p {
+    font-size: .18rem;
+    color: #999;
+    line-height: 1rem;
+}
+.car-num .no-bg {
+    background: none;
+}
+ 
+.content {
+    margin: 20rpx 24rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 30rpx 20rpx;
+}
+.keybord ul {
+    margin-right: -.2rem;
+}
+.keybord .key {
+    float: left;
+    width: 70rpx;
+    height: 74rpx;
+    margin: 0 18.5rpx 20rpx 0;
+    border: 1px solid #dedede;
+    border-radius: 10rpx;
+    text-align: center;
+    
+    font-size: 34rpx;
+    line-height: 74rpx;
+    color: #333;
+    background-color: #fff;
+    transition: all .2s;
+}
+.keybord .delete {
+    position: relative;
+    background-color: #dedede;
+}
+.keybord .delete:active {
+    background-color: #dedede !important;
+    opacity: .8;
+}
+.keybord .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    width: .42rem;
+    height: .3rem;
+    background-size: .42rem .3rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(~assets/images/keybord-delete.png);
+}
+.keybord .key-disable:active {
+    color: #bbb;
+    background-color: #fff !important;
+    border: 1px solid #dedede !important;
+}
+.keybord .key:active {
+    background-color: #ec6c00;
+    color: #fff;
+    border: 0;
+}
+.keybord .key-disable {
+    color: #bbb !important;
+}
+.keybord {
+    margin-top: 20rpx;
+    background-color: #f6f6f6;
+    padding: 20rpx 22rpx;
+    border-radius: 20rpx;
+}
+
+.demo-container {
+    background:#fff;
+    height:100vh;
+    width:80vw;
+}
+
+.index-suoy {
+    width:60rpx;
+    min-height: 100rpx;
+    position: fixed;
+    top: 20rpx;
+    right: 10rpx;
+    text-align: center
+}
+.index-suoy .suoy {
+    display:inline-block;
+    width:50rpx;
+    height:30rpx;
+    line-height: 30rpx;
+    font-size: 32rpx;
+    float: left;
+    margin-bottom: 15rpx;
+    background:#fff;
+
+}
+.input-car {
+    margin: 20rpx 24rpx;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    border-radius: 20rpx;
+    line-height:80rpx;
+    padding-left:30rpx;
+    
+}
+.input-area {
+    position: relative;
+ }
+ .input-area .label {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    line-height: 88rpx;
+    font-size: 28rpx;
+    padding: 0 .20rpx 0 30rpx; */
+    color: #333;
+    float: left
+}
+.input-area .carType {
+    padding-left: 16.5rpx;
+    padding-right: 40rpx;
+    line-height: 88rpx;
+    font-size: 28rpx;
+    color: #999;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+.input-area .colorBlack {
+    color: #333;
+ }
+.input-area .right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20rpx;
+    margin: auto;
+    width: 15rpx;
+    height: 24rpx;
+    background-size: 15rpx 24rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-image: url(~assets/images/more-right.png); */
+}
+.car-chioce {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
