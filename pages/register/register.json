@@ -3,7 +3,9 @@
         "i-input": "../../dist/input/index",
         "i-icon": "../../dist/icon/index",
         "i-button": "../../dist/button/index",
-        "i-checkbox": "../../dist/checkbox/index"
+        "i-checkbox": "../../dist/checkbox/index",
+        "i-checkbox-group": "../../dist/checkbox-group/index",
+        "i-radio": "../../dist/radio/index"
     },
     
     "navigationBarTitleText": "通行证注册"

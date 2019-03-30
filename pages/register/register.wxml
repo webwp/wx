@@ -20,10 +20,13 @@
                         <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                             <i-icon type="mobilephone_fill" size="26" color="#ccc"/>
                         </view>
-                        <input class="form-item-side" style="width:270rpx" bindinput="bindKeyInput" placeholder="请输入手机号码" number/>
+                        <input class="form-item-side" style="width:270rpx" bindinput="onChangeInput" placeholder="请输入手机号码" value="{{ ruleForm.account }}" data-index="account" number/>
                         <view class="form-item-side" style="float:right" hover-class="none" hover-stop-propagation="false">
-                            <view class="codes" hover-class="none" hover-stop-propagation="false">
+                            <view class="codes" wx:if="{{codeStatus}}" bindtap="onClickGetCode" hover-class="none" hover-stop-propagation="false">
                                 获取验证码
+                            </view>
+                            <view class="codes color-disabled" wx:if="{{!codeStatus}}" hover-class="none" hover-stop-propagation="false">
+                                {{ times }} s
                             </view>
                         </view>
                    </view>
@@ -31,14 +34,14 @@
                         <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                             <i-icon type="message" size="26" color="#ccc" />
                         </view>
-                        <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输验证码" number/>
+                        <input class="form-item-side" style="width:6rem" bindinput="onChangeInput" placeholder="请输验证码"  value="{{ ruleForm.authcode }}" data-index="authcode" number/>
                    </view>
                    <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
                         <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                             <i-icon type="lock" size="26" color="#ccc" />
                         </view>
-                        <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'password' }}" bindinput="onChangeInput" value="{{password}}" type="password" placeholder="请输入密码" placeholder-class="placeholder" />
-                        <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'text' }}" bindinput="onChangeInput" value="{{password}}" type="text" placeholder="请输入密码" placeholder-class="placeholder" />
+                        <input class="form-item-side" style="width:400rpx" hidden="{{ !(pwdStatus === 'password') }}" bindinput="onChangeInput" value="{{ruleForm.password}}" data-index="password" type="password" placeholder="请输入密码" placeholder-class="placeholder" />
+                        <input class="form-item-side" style="width:400rpx" hidden="{{pwdStatus === 'password' }}" bindinput="onChangeInput" value="{{ruleForm.password}}" data-index="password" type="text" placeholder="请输入密码" placeholder-class="placeholder" />
                         <!-- <input class="form-item-side" type="{{ pwdStatus ? 'text' : 'password'}}" style="width:6rem" bindinput="bindKeyInput"  bindblur="inputblur" placeholder="密码" style="width:50vw" number/> -->
                         <i-icon type="browse" size="20" bindtap="changePwdType" color="{{ pwdStatus === 'text' ? '#ec6c00' : '#ccc'}}"  style="float:right"/> 
                    </view>
@@ -47,12 +50,21 @@
             </view>
         </view>
         <view class="font-size-small" hover-class="none" hover-stop-propagation="false">
-            <checkbox value="0" checked="" color="#ec6c00" class="checkbox-re"/>同意金奔腾通行证服务条款
+            <!-- <checkbox value="0" checked="" bindchange="onHandleCheckbox" color="#ec6c00" class="checkbox-re"/> -->
+            <checkbox-group bindchange="checkboxChange" i-class="checkbox-group">
+                <label class="checkbox">
+                    <checkbox value="" checked="{{checked}}"  class="checkbox-re"/>
+                    同意金奔腾通行证服务条款
+                </label>
+            </checkbox-group>
+            <!-- <i-radio value="同意金奔腾通行证服务条款" checked="{{checked}}" bindchange="handleAnimalChange" position="left"></i-radio>
+            <i-checkbox value="{{animal}}" checked="{{checked}}" bindchange="handleAnimalChange">
+    </i-checkbox> -->
         </view>
         
     </view>
 
     <view class="" style="margin: 0 6.5vw" hover-class="none" hover-stop-propagation="false">
-        <i-button bind:click="handleClick" type="warning" i-class="cus-btn-s">注册</i-button>
+        <i-button bind:click="onhandleClickReg" type="warning" i-class="cus-btn-s">注册</i-button>
     </view>
 </view>

@@ -1,5 +1,6 @@
 // pages/login/login.js
 import WxValidate from '../../utils/WxValidate'
+var app = getApp()
 Page({
 
   /**
@@ -18,18 +19,24 @@ Page({
     pwdStatus: 'password',
     password: '',
     ruleForm: {
-      phone: '',
-      code: '',
-      pwd: ''
+      regticket: '',
+      account: '',
+      auth:'',
+      type:'sms'
     }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log('app.globalData.netUtil', app.globalData.netUtil)
     // 初始化表单验证
     this.initValidate()
+    this.setData({
+      ruleForm: {
+        regticket: options.regticket
+      }
+    })
   },
   onShow () {
     console.log('loginOnShow', this)
@@ -88,13 +95,13 @@ Page({
   },
   submitForm() {
     console.log(this.data.ruleForm)
-    const params = {}
-    params.phone = this.data.ruleForm.phone
-    if (this.data.loginType === '1') {
-      params.code = this.data.ruleForm.code
-    } else {
-      params.pwd = this.data.ruleForm.pwd
-    }
+    const params = this.data.ruleForm
+    // params.phone = this.data.ruleForm.phone
+    // if (this.data.loginType === '1') {
+    //   params.code = this.data.ruleForm.code
+    // } else {
+    //   params.pwd = this.data.ruleForm.pwd
+    // }
     console.log('params', params)
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
@@ -114,12 +121,21 @@ Page({
     })
   },
   switchType (e) {
-    let val = e.target.dataset.index
+    let val = e.target.dataset.index,
+        t = this
     if (this.data.loginType === val) {
       return false
     }
+    Object.keys(this.data.ruleForm).forEach((item, index) => {
+      if (item !== 'regticket')
+      t.data.ruleForm[item] = ''
+    })
     this.setData({
-      loginType: val
+      loginType: val,
+      ruleForm: {
+        ...this.data.ruleForm,
+        type: val === 1 ? 'sms' : 'pwd'
+      }
     })
     this.setData({
       boxPosition: "msTransform: translateX("+ (this.data.loginType === '1' ? 0 : '-70vw') +"); webkitTransform: translateX("+ (this.data.loginType === '1' ? 0 : '-70vw') +"); transform: translateX("+ (this.data.loginType === '1' ? 0 : '-70vw') +")"
@@ -131,6 +147,7 @@ Page({
     this.setData({
       pwdStatus: this.data.pwdStatus === 'password' ? 'text' : 'password'
     })
+    console.log(this.data.ruleForm.auth)
   },
   onChangeInput(e) {
     const { detail, target } = e
@@ -145,30 +162,30 @@ Page({
     * 4-2(配置规则)
     */
     const rules = {
-      code: {
-        required: this.data.loginType === '0' ? false : true,
-        rangelength: [2, 6]
+      auth: {
+        required: true,
+        // rangelength: [2, 6]
       },
-      pwd: {
-        required: this.data.loginType === '1' ? false : true
-      },
-      phone: {
+      account: {
         required: true,
         tel: true,
+      },
+      regticket: {
+        required: true
       }
     }
     // 验证字段的提示信息，若不传则调用默认的信息
     const messages = {
-      code: {
-        required: '验证码不能为空',
+      regticket: {
+        required: '通行证不能为空',
         rangelength: '验证码不能为空'
       },
-      phone: {
+      account: {
         required: '请输入11位手机号码',
         tel: '请输入正确的手机号码',
       },
-      pwd: {
-        required: '密码不能为空'
+      auth: {
+        required: '密码或验证码不能为空'
       }
     }
     // 创建实例对象

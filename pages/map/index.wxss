@@ -18,5 +18,5 @@
 .mapTopTip-right { float: right;width: 60vw; height:25vw; position: relative }
 .mapTopTip-m { font-size: 28rpx; position: absolute; bottom: 0; width: 100%;}
 
-.cus-btn-map { border-radius: 22px!important}
+.cus-btn-map { border-radius: 22px!important; background: #ec6c00; border-radius: 45rpx; line-height: 80rpx;padding: 0 20rpx; color:#fff;}
 

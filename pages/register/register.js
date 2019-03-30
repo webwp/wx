@@ -1,18 +1,38 @@
 // wxPile/pages\register/register.js
+import WxValidate from '../../utils/WxValidate'
+const MD5 = require('../../utils/MD5.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    codeStatus: true,
+    times: 90,
     pwdStatus: 'password',
-    password: ''
+    password: '',
+    ruleForm: {
+      regticket: '',
+      account: '',
+      authcode: '',
+      password: ''
+    },
+    checked: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      ruleForm: {
+        ...this.data.ruleForm,
+        regticket: options.regticket
+      }
+    })
+    // 初始化表单验证
+    this.initValidate()
   },
 
   /**
@@ -70,9 +90,117 @@ Page({
     })
   },
   onChangeInput(e) {
-    const { detail } = e
-    this.setData({
-      password: detail.value
+    const { detail, target } = e
+    this.data.ruleForm[target.dataset.index] = detail.value
+  },
+  // 注册提交
+  onhandleClickReg() {
+    console.log(this.data.ruleForm)
+    let params = this.data.ruleForm
+    // params.phone = this.data.ruleForm.phone
+    // if (this.data.loginType === '1') {
+    //   params.code = this.data.ruleForm.code
+    // } else {
+    //   params.pwd = this.data.ruleForm.pwd
+    // }
+    params = { ...params, password: MD5.hex_md5(params.password)}
+    console.log('params', params)
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0]
+      this.showModal(error)
+      return
+    }
+
+    // 验证通过 提交数据到后台
+    wx.showToast({
+      title: '提交成功！！！！'
     })
-  }
+  },
+  showModal(error) {
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    })
+  },
+  // 是否同意协议
+  onHandleCheckbox(e) {
+    console.log(e)
+  },
+  handleAnimalChange({ detail = {} }) {
+    console.log(console.log(detail))
+      this.setData({
+          checked: detail.current
+      });
+  },
+  // 获取验证码
+  onClickGetCode() {
+    this.setData({
+      codeStatus: false
+    })
+    const t = this
+    let index = setInterval(function() {
+      t.setData({
+        times: t.data.times - 1
+      })
+      if (t.data.times<=0) {
+        clearInterval(index)
+        t.setData({
+          times: 90,
+          codeStatus: true
+        })
+      }
+      
+    }, 1000)
+  },
+  
+  /**
+  * 表单-验证字段
+  */
+ initValidate() {
+
+    /**
+    * 4-2(配置规则)
+    */
+    const rules = {
+      authcode: {
+        required: true,
+        // rangelength: [2, 6]
+      },
+      account: {
+        required: true,
+        tel: true,
+      },
+      regticket: {
+        required: true
+      },
+      password: {
+        required: true
+      }
+    }
+    // 验证字段的提示信息，若不传则调用默认的信息
+    const messages = {
+      regticket: {
+        required: '没有通行证',
+        rangelength: '验证码不能为空'
+      },
+      account: {
+        required: '请输入11位手机号码',
+        tel: '请输入正确的手机号码',
+      },
+      authcode: {
+        required: '验证码不能为空'
+      },
+      password: {
+        required: '密码不能为空'
+      }
+    }
+    // 创建实例对象
+    this.WxValidate = new WxValidate(rules, messages)
+    /**
+    * 也可以自定义验证规则
+    */
+    this.WxValidate.addMethod('assistance', (value, param) => {
+      return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
+    }, '请勾选 《金奔腾通行证服务》')
+  },
 })

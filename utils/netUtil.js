@@ -2,15 +2,16 @@
  * 供外部post 请求调用
  */
 function post(url, params, onStart, onSuccess, onFailed) {
-    request(url, params, onStart, onSuccess, onFailed)
+    request(url, params, 'POST', onStart, onSuccess, onFailed)
 }
 /**
  * 供外部get请求调用
  */
 function get(url, params, onStart, onSuccess, onFailed) {
-    request(url, params, onStart, onSuccess, onFailed)
+    request(url, params, 'GET', onStart, onSuccess, onFailed)
 }
 
+let baseConfig = require('./config')
 /**
  * function :封装网络请求
  * @url: URL请求地址
@@ -25,8 +26,9 @@ function get(url, params, onStart, onSuccess, onFailed) {
     //  请求开始 start
      onStart()
      wx.request({
-        url: url,
-        data: dealParams(params),
+        url: baseConfig.baseUrl,
+        method: method,
+        data: dealParams(url,params),
         header: { 'content-type': 'application/json' },
         success: function (res) {
             if (res.data) {
@@ -51,9 +53,13 @@ function get(url, params, onStart, onSuccess, onFailed) {
   * function: 根据需求处理参数或添加固定参数等
   * @params 请求参数
   */
- function dealParams(params) {
+ function dealParams(url, params) {
+     let resParams = {
+         ...params,
+         method: baseConfig.method[url]
+     }
     /**具体处理参数 */
-    return params
+    return resParams
  }
 
  module.exports = {

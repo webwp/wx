@@ -47,9 +47,12 @@ Page({
          if (res.code) {
            // 将code 发送给后台申请token
            console.log('获取code', res.code)
-           wx.navigateTo({
-             url: '../../pages/login/login'
-           })
+          //  wx.navigateTo({
+          //    url: '../../pages/login/login?regticket=OPTIONSELKSNGELWSFAHSFKJESJFE'
+          //  })
+           wx.reLaunch({
+            url: '../../pages/map/index'
+          })
            // 后端返回标志 决定跳转页面
            // if (res.sign) {
            //   wx.navigateTo({

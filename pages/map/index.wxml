@@ -41,14 +41,14 @@
         >
           最近的检测桩
         </button> -->
-        <cover-view bind:click="handleClickss" type="warning" size="small" i-class="cus-btn-map">最近的检测桩</cover-view>
+        <cover-view bind:click="handleClickss" type="warning" size="small" class="cus-btn-map">最近的检测桩</cover-view>
       </cover-view>
       <cover-view class="controls-item controls-right controls-radius">
         <cover-image class="icon-avatar" src="../assets/images/2.png" mode="cover"></cover-image>
       </cover-view>
     </cover-view>
   </map>
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" style="display:none">
     <!--输入起点和目的地经纬度坐标，格式为string格式-->
     <!--起点输入框,同终点，不填默认当前位置-->
     <label>起点坐标：<input style="border:1px solid #000;" name="start"></input></label>
@@ -56,5 +56,5 @@
     <label>终点坐标：<input style="border:1px solid #000;" name="dest"></input></label> 
     <!--提交表单数据-->
     <button form-type="submit">路线规划</button>
-</form>
+  </form>
 </view>

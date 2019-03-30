@@ -154,3 +154,9 @@
 .checkbox-re {
     zoom: .7;
 }
+
+.checkbox-group {
+  line-height:52rpx;
+margin-top:20rpx;
+
+}

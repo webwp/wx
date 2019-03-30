@@ -3,9 +3,9 @@
     <view class="userTitle" hover-class="none" hover-stop-propagation="false">
         <view class="userImg" style="width:70%; float:left; line-height:160rpx;position:fixed;top:20rpx;" hover-class="none" hover-stop-propagation="false">
             <view class="userinfo-avatar" hover-class="none" hover-stop-propagation="false">
-                <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}"></image>
+                <image bindtap="bindViewTap" hidden="{{userInfo.avatarUrl === undefined}}" src="{{userInfo.avatarUrl}}"></image>
             </view>
-            <text style="color:#fff">这是车主的用户名<i-icon type="label" /></text>
+            <text style="color:#fff">{{userInfo.nickName}}<i-icon type="label" /></text>
         </view>
         <view class="userEdit" style="width:30%; float:right; text-align:center; line-height:160rpx" hover-class="none" hover-stop-propagation="false">
             <i-icon type="editor" size="28" color="#fff" />

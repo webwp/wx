@@ -96,7 +96,8 @@ App({
     // })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    netUtil: require('./utils/netUtil')
   },
   validate() {
     wx.request({

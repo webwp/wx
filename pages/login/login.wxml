@@ -30,7 +30,7 @@
                             <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                                 <i-icon type="mobilephone_fill" size="22" color="#ccc"/>
                             </view>
-                            <input class="form-item-side" style="width:250rpx" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ ruleForm.phone }}" data-index="phone" number/>
+                            <input class="form-item-side" style="width:250rpx" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ ruleForm.account }}" data-index="account" number/>
                             <view class="form-item-side" style="float:right" hover-class="none" hover-stop-propagation="false">
                                 <view class="codes" wx:if="{{codeStatus}}" bindtap="onClickGetCode" hover-class="none" hover-stop-propagation="false">
                                     获取验证码
@@ -44,7 +44,7 @@
                             <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                                 <i-icon type="message" size="22" color="#ccc" />
                             </view>
-                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输验证码" bindinput="onChangeInput" value="{{ruleForm.code}}" data-index="code" number/>
+                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输验证码" bindinput="onChangeInput" value="{{ruleForm.auth}}" data-index="auth" number/>
                     </view>
                 </view>
                 <!-- 密码登录 -->
@@ -53,15 +53,15 @@
                             <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                                 <i-icon type="mobilephone_fill" size="22" color="#ccc"/>
                             </view>
-                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ruleForm.phone}}" data-index="phone" number/>
+                            <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="请输入手机号码" bindinput="onChangeInput" value="{{ruleForm.account}}" data-index="account" number/>
                     </view>
                     <view class="form-item-list" hover-class="none" hover-stop-propagation="false">
                             <view class="form-item-side" style="width:2rem" hover-class="none" hover-stop-propagation="false">
                                 <i-icon type="lock" size="22" color="#ccc" />
                             </view>
                             <!-- <input class="form-item-side" style="width:6rem" bindinput="bindKeyInput" placeholder="密码" number/> -->
-                            <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'password' }}" bindinput="onChangeInput" value="{{ruleForm.pwd}}" data-index="pwd" type="password" placeholder="请输入密码" placeholder-class="placeholder" />
-                            <input class="form-item-side" style="width:400rpx" wx:if="{{pwdStatus === 'text' }}" bindinput="onChangeInput" value="{{password.pwd}}" data-index="pwd" type="text" placeholder="请输入密码" placeholder-class="placeholder" />
+                            <input class="form-item-side" style="width:400rpx" hidden="{{ !(pwdStatus === 'password') }}" bindinput="onChangeInput" value="{{ruleForm.auth}}" data-index="auth" type="password" placeholder="请输入密码" placeholder-class="placeholder" />
+                            <input class="form-item-side" style="width:400rpx" hidden="{{ pwdStatus === 'password' }}" bindinput="onChangeInput" value="{{ruleForm.auth}}" data-index="auth" type="text" placeholder="请输入密码" placeholder-class="placeholder" />
                             <i-icon type="browse" size="20" bindtap="changePwdType" color="{{ pwdStatus === 'text' ? '#ec6c00' : '#ccc'}}"  style="float:right"/> 
                     </view>
                 </view>
@@ -78,7 +78,7 @@
         </view>
         <view class="txt-center" style="font-size:.95rem" hover-class="none" hover-stop-propagation="false">
             没有通行证？
-            <navigator class="color-error display-type-inline" target="" url="/pages/register/register" hover-class="navigator-hover" open-type="navigate">
+            <navigator class="color-error display-type-inline" target="" url="/pages/register/register?regticket={{ ruleForm.regticket }}" hover-class="navigator-hover" open-type="navigate">
                 去注册
             </navigator>
         </view>
