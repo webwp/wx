@@ -24,6 +24,7 @@ Page({
     showRight1: false,
     showRight2: false,
     showRight3: false,
+    numArrStatus: true,
     resCar: [],
     Letter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     toView: 'a'
@@ -33,7 +34,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCarArr()
+
+    let t = this
+    const provinceArrItem = []
+    '京津冀晋蒙辽吉黑沪苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云渝藏陕甘青宁新'.split('').forEach((item) => {
+      provinceArrItem.push({key: item, status: true})
+    })
+    this.setData({
+      provinceArr: provinceArrItem
+    })
   },
 
   /**
@@ -43,21 +52,25 @@ Page({
     let t = this
     const lettersArrItem = []
     'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((item) => {
-      lettersArrItem.push({key: item, status: true})
+      let _bool = true
+      if ( item === 'I' || item === 'O') {
+        _bool = false
+      } else {
+        _bool = true
+      }
+      lettersArrItem.push({key: item, status: _bool})
     })
     const numArrItem = []
     '1234567890'.split('').forEach((item) => {
       numArrItem.push({key: item, status: true})
     })
-    const provinceArrItem = []
-    '京津冀晋蒙辽吉黑沪苏浙皖闽赣鲁豫鄂湘粤桂琼川贵云渝藏陕甘青宁新'.split('').forEach((item) => {
-      provinceArrItem.push({key: item, status: true})
-    })
     this.setData({
       lettersArr: lettersArrItem,
-      setNumArr: numArrItem,
-      provinceArr: provinceArrItem
+      setNumArr: numArrItem
     })
+
+    // 处理汽车品牌
+    this.getCarArr()
   },
 
   /**
@@ -134,7 +147,8 @@ Page({
       carId: arr.slice()
     })
     this.setData({
-      letterStatus: this.data.letterStatus !== 0
+      letterStatus: this.data.letterStatus !== 0,
+      numArrStatus: this.data.focusIndex > 1 ? false : true
     })
     console.log(this.data.carId)
   },
@@ -202,5 +216,27 @@ Page({
     this.setData({
       toView: target.dataset.index
     })
+  },
+  // 删除车牌号
+  deleteCar() {
+    let index = this.data.focusIndex,
+        carId = this.data.carId
+    // 当前carId 下标index为空时，清空上一个值
+    if (carId[index] === '') {
+      carId[index-1] = ''
+    } else {
+      carId[index] = ''
+    }
+    this.setData({
+      carId: carId,
+      focusIndex: index === 0 ? 0 : index - 1,
+      letterStatus: (index-1) === 0 ? false : true,
+      numArrStatus: index-1 > 1 ? false : true
+    })
+    if (index-1 === 0) {
+      this.setData({
+        letterStatus: false
+      })
+    }
   }
 })

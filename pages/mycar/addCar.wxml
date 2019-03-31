@@ -18,7 +18,7 @@
             <view class="" wx:for="{{resCar}}" wx:for-index="key"  wx:for-item="value" hover-class="none" hover-stop-propagation="false" wx:key="{{index}}">
                 <i-panel  class="cell-panel-demo" title="{{ key }}" id="{{key}}">
                     <i-cell-group>
-                        <i-cell wx:for="{{value}}" title="" data-number="{{number}}" is-link  bindtap="openTwoDrawer">
+                        <i-cell wx:for="{{value}}" title="" data-number="{{number}}" is-link  bindtap="openTwoDrawer" wx:key="{{index}}">
                             <image class="" src="http://{{item.logo}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" style="width:70rpx; height:70rpx;vertical-align:middle;"/>
                             {{item.name}}
                         </i-cell>
@@ -28,7 +28,7 @@
         </scroll-view>
         
         <view class="index-suoy">
-            <view class="suoy" wx:for="{{Letter}}" data-index="{{item}}" selectable="false" space="false" decode="false" style="display:inline-block;" bindtap="onHandleAnchor">
+            <view class="suoy" wx:for="{{Letter}}" data-index="{{item}}" selectable="false" space="false" decode="false" style="display:inline-block;" bindtap="onHandleAnchor" wx:key="{{index}}">
                 {{item}}
             </view>
         </view>
@@ -52,8 +52,8 @@
     <view class="" hover-class="none" hover-stop-propagation="false" style="margin-bottom:20rpx">
         车牌号 
     </view>
-    <view class="car-num clearfix" hover-class="none" hover-stop-propagation="false">
-        <view wx:for="{{carId}}" class="item border-1px {{ focusIndex === index ? 'item-active' : ''}} {{ index === 7 ? 'item-last' : ''}}" selectable="false" space="false" decode="false" data-index="{{index}}" bindtap="focusCarId">
+    <view class="car-num clearfix box-flex-car" hover-class="none" hover-stop-propagation="false">
+        <view wx:for="{{carId}}" wx:key="{{index}}" class="item border-1px {{ focusIndex === index ? 'item-active' : ''}} {{ index === 7 ? 'item-last' : ''}}" selectable="false" space="false" decode="false" data-index="{{index}}" bindtap="focusCarId">
             <view wx:if="{{index === 7}}" class="" style="font-size:20rpx" hover-class="none" hover-stop-propagation="false">
                 新能源
             </view>
@@ -61,10 +61,13 @@
         </view>
         
     </view>
-    
+    <view class="clear" hover-class="none" hover-stop-propagation="false">
+        
+    </view>
+      
     <view class="keybord clearfix" hover-class="none" hover-stop-propagation="false">
         <!-- 省份输入 -->
-        <view hidden="{{letterStatus}}" class="" hover-class="none" hover-stop-propagation="false">
+        <view wx:if="{{provinceArr.length !== 0}}" hidden="{{letterStatus}}" class="box-flxe" hover-class="none" hover-stop-propagation="false">
             <view class="key" wx:for="{{provinceArr}}" wx:key="{{index}}" bindtap="preeKey" data-index="{{item}}" hover-class="none" hover-stop-propagation="false">
                 {{item.key}}
             </view>
@@ -77,29 +80,39 @@
             <view class="key" hover-class="none" hover-stop-propagation="false">
                 
             </view>
-            <view class="key delete" hover-class="none" hover-stop-propagation="false">
-                
+            <view class="key delete" hover-class="none" bindtap="deleteCar" hover-stop-propagation="false">
+                <i-icon type="close" />
             </view>
         </view>
         <!-- 键盘字母数字输入 -->
-        <view hidden="{{!letterStatus}}" class="xxx" hover-class="none" hover-stop-propagation="false">
-            <view class="key rr" wx:for="{{lettersArr}}" wx:key="{{index}}" bindtap="preeKey" data-index="{{item}}" hover-class="none" hover-stop-propagation="false">
+        <view hidden="{{!letterStatus}}" class="box-flxe" hover-class="none" hover-stop-propagation="false">
+            <view wx:for="{{lettersArr}}" wx:key="{{index}}" class="key {{item.status ? '' : 'color-disabled'}}" bindtap="preeKey" data-index="{{item}}" hover-class="none" hover-stop-propagation="false">
                 {{item.key}}
             </view>
             <!-- 数字输入 -->
-            <view class="" hover-class="none" hover-stop-propagation="false">
-                <view class="key" wx:for="{{setNumArr}}" hover-class="none" bindtap="preeKey" data-index="{{item}}" hover-stop-propagation="false">
-                    {{item.key}}
-                </view>
-                <view class="key key-disable" hover-class="none" hover-stop-propagation="false">
-                    
-                </view>
+            <!-- <view class="" hover-class="none" hover-stop-propagation="false">
+                
+            </view> -->
+            <view class="key" wx:for="{{setNumArr}}" hidden="{{numArrStatus}}" hover-class="none" bindtap="preeKey" data-index="{{item}}" hover-stop-propagation="false" wx:key="{{index}}">
+                {{item.key}}
+            </view>
+            <view class="key key-disable" hidden="{{numArrStatus}}" hover-class="none" hover-stop-propagation="false">
+                
+            </view>
+            <view class="key key-disable" hidden="{{numArrStatus}}" hover-class="none" hover-stop-propagation="false">
+                
+            </view>
+            <view class="key key-disable" hidden="{{numArrStatus}}" hover-class="none" hover-stop-propagation="false">
+                
+            </view>
+            <view class="key key-disable" hidden="{{numArrStatus}}" hover-class="none" hover-stop-propagation="false">
+                
             </view>
             <view class="key key-disable" hover-class="none" hover-stop-propagation="false">
                 
             </view>
-            <view class="key delete" hover-class="none" hover-stop-propagation="false">
-                
+            <view class="key delete" bindtap="deleteCar" hover-class="none" hover-stop-propagation="false">
+                <i-icon type="close" />
             </view>
         </view>
     </view>
