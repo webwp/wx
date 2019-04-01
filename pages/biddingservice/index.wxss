@@ -1,7 +1,7 @@
-/* wxPile/pages\order/order.wxss */
+/* wxPile/pages\biddingservice/index.wxss */
 
 page {
-    padding-top: 42px;
+    /* padding-top: 42px; */
 }
 .card-content {
     padding: 25rpx
@@ -27,4 +27,5 @@ page {
     overflow:hidden;
     height:76rpx;
     white-space:nowrap;
+
 }

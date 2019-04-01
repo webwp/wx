@@ -1,0 +1,61 @@
+<!--wxPile/pages\biddingservice/index.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <!-- <view class="tab-cus" hover-class="none" hover-stop-propagation="false">
+        <i-tabs current="{{ current }}" bindchange="handleChange" color="#ec6c00">
+            <i-tab wx:for="{{ tabType }}" key="tab{{ index }}" title="{{ item }}" id="tab{{ index }}"  wx:key="{{ index }}"></i-tab>
+        </i-tabs>
+    </view> -->
+
+    <view class='tab1'>
+        <view class="tab-list-item" hover-class="none" hover-stop-propagation="false">
+            <i-row i-class="tab-list-item-row">
+                <i-col span="16" i-class="col-class"><i class="iconfont icon-baoxian color-info font-size-rpx-50"></i> 车险竞价</i-col>
+                <i-col span="8" i-class="col-class txt-right font-size-rpx color-info">商家报价中</i-col>
+            </i-row>
+            <view class="font-size-rpx-32 tab-list-content" hover-class="none" hover-stop-propagation="false" bindtap="onHandleOrderDetail">
+                <i-row i-class="">
+                    <i-col span="24" i-class="col-class font-w">交强险+车船税+商业险</i-col>
+                    <!-- <i-col span="9" i-class="col-class txt-center"></i-col> -->
+                </i-row>
+                <!-- <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <text>没有故障报告这里写描述说明，一行显示多出来的地方叫做···</text>
+                </view> -->
+                <view class="content-item content-ell color-sub" hover-class="none" hover-stop-propagation="false">
+                    <i class="iconfont icon-chepai font-size-rpx-50 mr"></i><view class="display-type-inline-block color-title">[京AG6001]</view> 东风标致408 2018款自动豪华天窗看风景大号车大型车
+                </view>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i class="iconfont icon-chengshi font-size-rpx-50 mr"></i>到店服务/上门服务/到店取车
+                </view>
+            </view>
+            <view class="txt-right" hover-class="none" hover-stop-propagation="false" style="padding: 0 25rpx">
+                <i-button bind:click="onHandleToPay" type="ghost" inline size="small" shape="circle">报价信息</i-button>
+            </view>
+        </view>
+        <view class="tab-list-item" hover-class="none" hover-stop-propagation="false">
+            <i-row i-class="tab-list-item-row">
+                <i-col span="16" i-class="col-class"><i class="iconfont icon-baoxian color-info font-size-rpx-50"></i> 车险竞价</i-col>
+                <i-col span="8" i-class="col-class txt-right font-size-rpx color-info">商家报价中</i-col>
+            </i-row>
+            <view class="font-size-rpx-32 tab-list-content" hover-class="none" hover-stop-propagation="false" bindtap="onHandleOrderDetail">
+                <i-row i-class="">
+                    <i-col span="24" i-class="col-class font-w">交强险+车船税+商业险</i-col>
+                    <!-- <i-col span="9" i-class="col-class txt-center"></i-col> -->
+                </i-row>
+                <!-- <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <text>没有故障报告这里写描述说明，一行显示多出来的地方叫做···</text>
+                </view> -->
+                <view class="content-item content-ell color-sub" hover-class="none" hover-stop-propagation="false">
+                    <i class="iconfont icon-chepai font-size-rpx-50 mr"></i><view class="display-type-inline-block color-title">[京AG6001]</view> 东风标致408 2018款自动豪华天窗看风景大号车大型车
+                </view>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i class="iconfont icon-chengshi font-size-rpx-50 mr"></i>到店服务/上门服务/到店取车
+                </view>
+            </view>
+            <view class="txt-right" hover-class="none" hover-stop-propagation="false" style="padding: 0 25rpx">
+                <i-button bind:click="onHandleToPay" type="ghost" inline size="small" shape="circle">报价信息</i-button>
+            </view>
+        </view>
+    </view>
+    <i-toast id="toast" />
+</view>
+

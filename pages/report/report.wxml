@@ -32,7 +32,7 @@
        </view>
     </view>
     <view class="" style="padding:0 20px" hover-class="none" hover-stop-propagation="false">
-        <i-divider content="加载已经完成,没有其他数据" lineColor="#dbdbdb"></i-divider>
+        <i-divider content="加载已经完成,没有其他数据···" lineColor="#dbdbdb"></i-divider>
     </view>
     <i-toast id="toast" />
 </view>

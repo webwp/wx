@@ -1,5 +1,6 @@
 const baseConfig = {
-    baseUrl: '',
+    baseUrl: 'http://uk427x.natappfree.cc',	
+   
     // method 请求接口
     method: {
         // 用户注册

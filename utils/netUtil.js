@@ -24,13 +24,19 @@ let baseConfig = require('./config')
 
  function request(url, params, method, onStart, onSuccess, onFailed) {
     //  请求开始 start
+    console.log('url', baseConfig.default.baseUrl + url)
      onStart()
      wx.request({
-        url: baseConfig.baseUrl,
+        url: baseConfig.default.baseUrl + url,
+        // url: 'http://192.168.0.19:22003/site/querySiteListInfo',
         method: method,
-        data: dealParams(url,params),
+        // data: dealParams(url,params),
+        data: params,
         header: { 'content-type': 'application/json' },
         success: function (res) {
+            
+            console.log('数据返回：', res.data)
+            onSuccess(res.data)
             if (res.data) {
                 /**
                  * start根据需求，接口的返回状态码进行处理

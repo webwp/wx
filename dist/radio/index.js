@@ -28,6 +28,10 @@ Component({
             type: String,
             value: 'left', //left right
             observer: 'setPosition'
+        },
+        img: {
+            type: String,
+            value: ''
         }
     },
     data: {

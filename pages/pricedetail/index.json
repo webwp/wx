@@ -7,8 +7,13 @@
         "i-card": "../../dist/card/index",
         "i-toast": "../../dist/toast/index",
         "i-icon": "../../dist/icon/index",
+        "i-badge": "../../dist/badge/index",
+        "i-rate": "../../dist/rate/index",
+        "i-grid": "../../dist/grid/index",
         "i-row": "../../dist/row/index",
-        "i-col": "../../dist/col/index"
+        "i-col": "../../dist/col/index",
+        "i-input": "../../dist/input/index"
     },
-    "navigationBarTitleText": "订单中心"
+    "navigationBarTitleText": "报价详情",
+    "enablePullDownRefresh":false
 }

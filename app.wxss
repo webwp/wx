@@ -22,6 +22,7 @@ page {
 .card-color-success > .i-card-header-extra {
   color: #19be6b !important
 }
+.fr {float: right}
 .font-size-small {font-size: .8rem}
 .font-color-small {color: rgb(125, 125, 125)}
 .tab-cus { position: fixed; width: 100vw;top: 0;left: 0;z-index: 999;}
@@ -31,7 +32,11 @@ page {
 .font-size-rpx { font-size: 28rpx}
 .font-size-rpx-mini { font-size: 24rpx}
 
-.font-size-rpx-32 { font-size: 32rpx}
+.font-size-rpx-32 { font-size: 32rpx!important}
+.font-size-rpx-36 { font-size: 36rpx!important}
+.font-size-rpx-40 { font-size: 40rpx!important}
+.font-size-rpx-50 { font-size: 50rpx!important}
+.font-size-rpx-60 { font-size: 60rpx!important}
 .font-w { font-weight: bold}
 
 .color-primary { color: #2d8cf0!important}
@@ -61,3 +66,130 @@ page {
   display: inline-block!important
 }
 .nav-btn { background: #ec6c00; border-radius: 10rpx; display: inline; margin: 0 15rpx; padding:10rpx 15rpx; color:#fff; font-size: .8rem}
+
+.tip-color-error {
+  display: inline-block;
+  padding:5rpx 10rpx;
+  border: 1rpx solid #ed3f14;
+  color: #ed3f14;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+.content-ell  {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+
+.btn-cir { border-radius: 88rpx!important}
+.color-border-pay { border: 1px solid #ec6c00 !important; color:#ec6c00 !important}
+
+.footer-submit { line-height: 110rpx; background: #fff; position: fixed; bottom: 0; left: 0; width:100vw; z-index: 100000;}
+
+.cus-submit { background: #EC6C00; color:#fff}
+.mt25 { margin-top: 25rpx}
+
+.mr { margin-right: 12.5rpx}
+
+.item-gray, .item-gray button {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  color: #80848f!important
+}
+
+
+
+/* 引入图标  来源 https://www.iconfont.cn */
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1119976_rf9c3bg8lr.eot?t=1554126363572'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1119976_rf9c3bg8lr.eot?t=1554126363572#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,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') format('woff2'),
+  url('//at.alicdn.com/t/font_1119976_rf9c3bg8lr.woff?t=1554126363572') format('woff'),
+  url('//at.alicdn.com/t/font_1119976_rf9c3bg8lr.ttf?t=1554126363572') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1119976_rf9c3bg8lr.svg?t=1554126363572#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align:middle;
+}
+
+.icon-woyaokaidian1:before {
+  content: "\e664";
+}
+
+.icon-penqi:before {
+  content: "\e626";
+}
+
+.icon-chengshi:before {
+  content: "\e6a4";
+}
+
+.icon-qudan:before {
+  content: "\e60d";
+}
+
+.icon-chepai:before {
+  content: "\e607";
+}
+
+.icon-baoxian:before {
+  content: "\e7b1";
+}
+
+.icon-gou:before {
+  content: "\e98c";
+}
+
+.icon-weixin:before {
+  content: "\e6bd";
+}
+
+.icon-qian:before {
+  content: "\e601";
+}
+
+.icon-ziyuan:before {
+  content: "\e60c";
+}
+
+.icon-zhifubao:before {
+  content: "\e6ad";
+}
+
+.icon-baoyang-copy-copy:before {
+  content: "\e600";
+}
+
+.icon-yinhangqia:before {
+  content: "\e634";
+}
+
+.icon-round-volume_up-px:before {
+  content: "\e6af";
+}
+
+.icon-round-volume_down-:before {
+  content: "\e6b0";
+}
+
+.icon-home:before {
+  content: "\e602";
+}
+
+.icon-weixiu:before {
+  content: "\e69a";
+}
+
+.icon-dianping:before {
+  content: "\e72a";
+}

@@ -1,11 +1,11 @@
-// wxPile/pages\mycar/mycar.js
+// wxPile/pages\pricedetail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    html: "<del>原价 ￥40100.00</del>"
   },
 
   /**
@@ -62,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  handleClickToAdd() {
-    wx.navigateTo({
-      url: '../../pages/mycar/addCar'
-    })
   }
 })

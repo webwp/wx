@@ -1,11 +1,31 @@
-// wxPile/pages\mycar/mycar.js
+// wxPile/pages\pay/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    payType: 1,
+    current: '余额支付',
+    balance: 5000,
+    orderPrace: 2000
+  },
+  handleFruitChange({ detail = {} }) {
+      this.setData({
+          current: detail.value
+      });
+  },
+  onHandleChangePayType( { target = {} } ) {
+     console.log(target)
+     this.setData({
+       payType: parseInt(target.dataset.paytype)
+     })
+  },
+  // 支付方法
+  onHandleToOrder() {
+    wx.navigateTo({
+      url: '../../pages/order/order'
+    })
   },
 
   /**
@@ -62,10 +82,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  handleClickToAdd() {
-    wx.navigateTo({
-      url: '../../pages/mycar/addCar'
-    })
   }
 })

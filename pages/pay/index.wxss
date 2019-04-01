@@ -1,0 +1,13 @@
+/* wxPile/pages\pay/index.wxss */
+.pay-item {
+    background: #fff; 
+    line-height: 96rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    padding: 0 25rpx
+}
+.pay-item i {
+    margin-right: 25rpx
+}
+.pay-item:nth-last-child(1) {
+    border-bottom: none
+}

@@ -2,7 +2,7 @@
     <i-cell i-class="i-radio-cell">
         <label>
             <radio value="{{value}}" checked="{{checked}}" color="{{checked?color:''}}" disabled="{{disabled}}" class="i-radio-radio {{positionCls}}" />
-            <view class="i-radio-title">{{value}}</view>
+            <view class="i-radio-title"><image wx:if="{{img !== ''}}" src="{{img}}" style="width:40rpx; height:40rpx" />{{value}}</view>
         </label>
     </i-cell>
 </view>

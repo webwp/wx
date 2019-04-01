@@ -4,4 +4,38 @@
     <navigator class="" target="" url="/pages/directory/directory" hover-class="navigator-hover" open-type="navigate">
         新增地址
     </navigator>
+    <i-row i-class="addr-list">
+        <i-col span="18" i-class="col-class"> 
+            <view class="display-type-inline-block font-w" selectable="false" space="false" decode="false">
+                张三
+            </view>
+            <view class="display-type-inline-block color-disabled" selectable="false" space="false" decode="false">
+                18007803076
+            </view>
+            <view class="display-type-inline-block tip-color-error" selectable="false" space="false" decode="false">
+                默认
+            </view>
+            <view class="addressDetail" hover-class="none" hover-stop-propagation="false">
+                北京市丰台区南四环西路188号总部基地十一区32号楼699层
+            </view>
+        </i-col>
+        <i-col span="6" i-class="col-class"><i-icon type="editor" /></i-col>
+    </i-row>
+    <i-row i-class="addr-list">
+        <i-col span="18" i-class="col-class"> 
+            <view class="display-type-inline-block font-w" selectable="false" space="false" decode="false">
+                张三
+            </view>
+            <view class="display-type-inline-block color-disabled" selectable="false" space="false" decode="false">
+                18007803076
+            </view>
+            <view class="display-type-inline-block tip-color-error" selectable="false" space="false" decode="false">
+                默认
+            </view>
+            <view class="addressDetail" hover-class="none" hover-stop-propagation="false">
+                北京市丰台区南四环西路188号总部基地十一区32号楼699层
+            </view>
+        </i-col>
+        <i-col span="6" i-class="col-class"><i-icon type="editor" /></i-col>
+    </i-row>
 </view>

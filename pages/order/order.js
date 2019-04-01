@@ -67,9 +67,9 @@ Page({
 
   },
   // 详情页面
-  handleToDetail() {
+  onHandleOrderDetail() {
     wx.navigateTo({
-      url: './pages/order/detail'
+      url: '../../pages/order/orderdetail'
     })
   },
   // 调用手机拨号
@@ -111,5 +111,11 @@ Page({
   },
   checkArrIndexOf(cur) {
     return this.data.alreadyLoadTab.indexOf(cur) < 0 ? true : false
+  },
+  // 去支付
+  onHandleToPay() {
+    wx.navigateTo({
+      url: '../../pages/pay/index'
+    })
   }
 })

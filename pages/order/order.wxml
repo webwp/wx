@@ -7,28 +7,57 @@
     </view>
 
     <view wx:for="{{ tabType }}" wx:if="{{ current === 'tab' + index ? true : false }}" wx:key="index" class='tab1'>
-        <view class="" hover-class="none" hover-stop-propagation="false">
-            <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
-            <view class="clear" hover-class="none" hover-stop-propagation="false"></view>
-            <i-card full title="维修竞价({{ item }})" extra="商家报价中" extraColor="#ec6c00" i-class="card-demo">
-                <view class="card-content" slot="content" bindtap="handleToDetail">
-                    <view class="card-content-item" hover-class="none" hover-stop-propagation="false">
-                        <text>没有故障报告这里写描述说明，一行显示多出来的地方叫做···</text>
-                    </view>
-                    <view class="card-content-child" hover-class="none" hover-stop-propagation="false">
-                        <i-icon type="label_fill" size="24" color="#ec6c00" />[京AG6001]东风标致408 2018款自动豪华天窗看风景大号车大型车
-                    </view>
-                    <view class="card-content-child" hover-class="none" hover-stop-propagation="false">
-                        <i-icon type="browse" size="24" color="#ec6c00" />到店服务/上门服务/到店取车
-                    </view>
+        <view class="tab-list-item" hover-class="none" hover-stop-propagation="false">
+            <i-row i-class="tab-list-item-row">
+                <i-col span="16" i-class="col-class">北京奔马汽配城</i-col>
+                <i-col span="8" i-class="col-class txt-right font-size-rpx color-error">待支付</i-col>
+            </i-row>
+            <view class="font-size-rpx tab-list-content" hover-class="none" hover-stop-propagation="false" bindtap="onHandleOrderDetail">
+                <i-row i-class="">
+                    <i-col span="15" i-class="col-class font-w">维修服务：6个维修项目</i-col>
+                    <i-col span="9" i-class="col-class txt-center">￥280.00</i-col>
+                </i-row>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <text>没有故障报告这里写描述说明，一行显示多出来的地方叫做···</text>
                 </view>
-                <view slot="footer" style="text-align:right">
-                    <i-button bind:click="handleDaoHang" type="ghost" inline size="small">路况导航</i-button>
-                    <i-button bind:click="handleTel" type="ghost" data-tel="18074949879" inline size="small">联系商家</i-button>
-                    <i-button bind:click="handleClick" type="ghost" inline size="small">去支付</i-button>
-                    <!-- <i-button bind:click="handleClick" type="ghost" inline size="small">报价信息</i-button> -->
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i-icon type="label_fill" size="24" color="#ec6c00" />[京AG6001]东风标致408 2018款自动豪华天窗看风景大号车大型车
                 </view>
-            </i-card>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i-icon type="browse" size="24" color="#ec6c00" />到店服务/上门服务/到店取车
+                </view>
+            </view>
+            <view class="txt-right" hover-class="none" hover-stop-propagation="false" style="padding: 0 25rpx">
+                <i-button bind:click="handleDaoHang" type="ghost" inline size="small" shape="circle">路况导航</i-button>
+                <i-button bind:click="handleTel" type="ghost" data-tel="18074949879" inline size="small" shape="circle">联系商家</i-button>
+                <i-button bind:click="onHandleToPay" type="ghost" inline size="small" shape="circle">去支付</i-button>
+            </view>
+        </view>
+        <view class="tab-list-item" hover-class="none" hover-stop-propagation="false">
+            <i-row i-class="tab-list-item-row">
+                <i-col span="16" i-class="col-class">北京奔马汽配城</i-col>
+                <i-col span="8" i-class="col-class txt-right font-size-rpx color-error">待支付</i-col>
+            </i-row>
+            <view class="font-size-rpx tab-list-content" hover-class="none" hover-stop-propagation="false">
+                <i-row i-class="">
+                    <i-col span="15" i-class="col-class font-w">维修服务：6个维修项目</i-col>
+                    <i-col span="9" i-class="col-class txt-center">￥280.00</i-col>
+                </i-row>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <text>没有故障报告这里写描述说明，一行显示多出来的地方叫做···</text>
+                </view>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i-icon type="label_fill" size="24" color="#ec6c00" />[京AG6001]东风标致408 2018款自动豪华天窗看风景大号车大型车
+                </view>
+                <view class="content-item" hover-class="none" hover-stop-propagation="false">
+                    <i-icon type="browse" size="24" color="#ec6c00" />到店服务/上门服务/到店取车
+                </view>
+            </view>
+            <view class="txt-right" hover-class="none" hover-stop-propagation="false" style="padding: 0 25rpx">
+                <i-button bind:click="handleDaoHang" type="ghost" inline size="small" shape="circle">路况导航</i-button>
+                <i-button bind:click="handleTel" type="ghost" data-tel="18074949879" inline size="small" shape="circle">联系商家</i-button>
+                <i-button bind:click="handleClick" type="ghost" inline size="small" shape="circle">去支付</i-button>
+            </view>
         </view>
     </view>
     <i-toast id="toast" />

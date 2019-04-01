@@ -6,6 +6,7 @@ var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 var qqmapsdk = new QQMapWX({
   key: 'LPDBZ-Z2Q3R-NMLW2-WRASK-CGGNO-TFFH5'
 })
+const { netUtil } = app.globalData
 Page({
   data: {
     curPosition: {
@@ -18,12 +19,38 @@ Page({
     isShow: true
   },
   onShow () {
-    console.log('onShow', this)
-    // 获取定位权限
-    // this.settingPosition()
-    
+    console.log('onShow', this, netUtil)
+    let params = {
+      "city":"南宁市",
+      "lng":108.33,
+      "lat":22.84
+    }
+    netUtil.postRequest('/site/querySiteListInfo', params, this.onStart, this.onSuccess, this.onFailed)
     this.wxGetLocation()
   },
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在加载',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    wx.hideLoading();
+    console.log('后端数据', res)
+    this.setData({
+      // jokeList: res.result.data //请求结果数据
+    })
+
+  },
+  onFailed: function (msg) { //onFailed回调
+    wx.hideLoading();
+    if (msg) {
+      wx.showToast({
+        title: msg,
+      })
+    }
+  },
+  // 网络请求 end
   onReady () {
     console.log('onReady', this)
   },

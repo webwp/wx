@@ -1,4 +1,4 @@
-// wxPile/pages\mycar/mycar.js
+// wxPile/pages\biddingservice/index.js
 Page({
 
   /**
@@ -62,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  handleClickToAdd() {
-    wx.navigateTo({
-      url: '../../pages/mycar/addCar'
-    })
   }
 })
