@@ -5,7 +5,12 @@ let wxGetSetting = require('../../utils/wxGetSetting')
 Page({
   data: {
     motto: 'Hello World',
-    userInfo: {},
+    userInfo: {
+      Gender: '男',
+      Name: 'wp',
+      Nickname: '岸上的鱼',
+      address: '广西南宁市西乡塘区'
+    },
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -25,9 +30,12 @@ Page({
         console.log(res)
         let { userInfo } = res
         t.setData({
-          userInfo: userInfo
+          userInfo: { ...t.data.userInfo, ...userInfo }
         })
         wx.hideLoading()
+      },
+      fail: function(err) {
+        console.log(err)
       }
     })
     

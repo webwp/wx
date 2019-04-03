@@ -30,6 +30,7 @@ page {
 .txt-left {text-align: left}
 .txt-right { text-align: right}
 .font-size-rpx { font-size: 28rpx}
+.font-size-rpx-30 { font-size: 30rpx}
 .font-size-rpx-mini { font-size: 24rpx}
 
 .font-size-rpx-32 { font-size: 32rpx!important}
@@ -79,6 +80,15 @@ page {
   text-overflow:ellipsis;
   white-space:nowrap;
   overflow: hidden;
+}
+
+.startdh {
+  width: 100px; display:inline-block; float:right;
+  background: #ec6c00;
+  line-height: 64rpx;
+  border-radius: 64rpx; 
+  text-align: center;
+  color: #fff;
 }
 
 

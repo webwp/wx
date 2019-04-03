@@ -1,0 +1,6 @@
+/* wxPile/pages\checklist/index.wxss */
+.content-page-list { background: #fff; padding:20rpx 25rpx; overflow:hidden; border-bottom: 1px solid #f1f1f1 }
+.content-page-list .items { float: left;}
+.content-page-list .item-image { width: 168rpx; height: 168rpx; background: #f1f1f1; border-radius: 15rpx; }
+.content-page-list .item-image image { width: 168rpx; height: 168rpx; }
+.content-page-list .item-text { margin-left: 25rpx}

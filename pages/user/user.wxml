@@ -17,6 +17,7 @@
     <view class="list-group" hover-class="none" hover-stop-propagation="false">
         <i-cell-group>
             <i-cell title="订单中心" is-link url="/pages/order/order"><i-icon type="document" slot="icon" color="#EC6C00" size="24" /></i-cell>
+            <i-cell title="竞价服务" is-link url="/pages/biddingservice/index"><i-icon type="clock" slot="icon" color="#EC6C00" size="24" /></i-cell>
             <i-cell title="修车跟踪" is-link url="#"><i-icon type="coordinates" slot="icon" color="#EC6C00" size="24" /></i-cell>
             <i-cell title="历史竞价" is-link url="/pages/biddinghis/biddinghis"><i-icon type="clock" slot="icon" color="#EC6C00" size="24" /></i-cell>
             <i-cell title="地址管理" is-link url="/pages/addrManagement/index"><i-icon type="clock" slot="icon" color="#EC6C00" size="24" /></i-cell>

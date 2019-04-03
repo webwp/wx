@@ -1,0 +1,27 @@
+<!--wxPile/pages\checklist/index.wxml-->
+<view class="content-page" hover-class="none" hover-stop-propagation="false">
+    <view wx:for="{{ list }}" class="content-page-list" hover-class="none" hover-stop-propagation="false">
+        <i-row>
+            <i-col span="6" i-class="col-class">
+                <view class="items item-image" hover-class="none" hover-stop-propagation="false">
+                    <image class="" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+                </view>
+            </i-col>
+            <i-col span="18" i-class="col-class">
+                <view class="items item-text display-type-inline-block font-size-rpx-30" hover-class="none" hover-stop-propagation="false">
+                    <view class="" style="height:100rpx" hover-class="none" hover-stop-propagation="false">
+                        {{item.address}}
+                    </view>
+                    <view class="" hover-class="none" hover-stop-propagation="false" style="line-height: 64rpx">
+                        <view class="display-type-inline-block color-success" selectable="false" space="false" decode="false">
+                            距离:{{item.distance}}米
+                        </view>
+                        <view class="display-type-inline-block startdh" hover-class="none" hover-stop-propagation="false" bindtap="onClickHandlerStartMap" data-item="{{item}}">
+                            开始导航
+                        </view>
+                    </view>
+                </view>
+            </i-col>
+        </i-row>
+    </view>
+</view>

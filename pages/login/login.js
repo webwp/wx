@@ -1,6 +1,7 @@
 // pages/login/login.js
 import WxValidate from '../../utils/WxValidate'
 var app = getApp()
+const { netUtil } = app.globalData
 Page({
 
   /**
@@ -20,8 +21,8 @@ Page({
     password: '',
     ruleForm: {
       regticket: '',
-      account: '',
-      auth:'',
+      account: '18007803076',
+      auth:'123123',
       type:'sms'
     }
   },
@@ -34,7 +35,8 @@ Page({
     this.initValidate()
     this.setData({
       ruleForm: {
-        regticket: options.regticket
+        ...this.data.ruleForm,
+        regticket: options.regticket || "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
       }
     })
   },
@@ -96,23 +98,18 @@ Page({
   submitForm() {
     console.log(this.data.ruleForm)
     const params = this.data.ruleForm
-    // params.phone = this.data.ruleForm.phone
-    // if (this.data.loginType === '1') {
-    //   params.code = this.data.ruleForm.code
-    // } else {
-    //   params.pwd = this.data.ruleForm.pwd
-    // }
     console.log('params', params)
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
       this.showModal(error)
       return
     }
-
+    
+    netUtil.getRequest('dswx.user.login', params, this.onStart, this.onSuccess, this.onFailed)
     // 验证通过 提交数据到后台
-    wx.showToast({
-      title: '提交成功！！！！'
-    })
+    // wx.showToast({
+    //   title: '提交成功！！！！'
+    // })
   },
   showModal(error) {
     wx.showModal({
@@ -197,24 +194,79 @@ Page({
       return this.WxValidate.optional(value) || (value.length >= 1 && value.length <= 2)
     }, '请勾选 《金奔腾通行证服务》')
   },
+  // 验证码返回值
+  onSuccessAuth(res) {
+     wx.hideLoading()
+     if (res.sendInterval > 0) {
+        this.setData({
+          codeStatus: false,
+          times: res.sendInterval
+        })
+        
+        const t = this
+        let index = setInterval(function() {
+          t.setData({
+            times: t.data.times - 1
+          })
+          if (t.data.times<=0) {
+            clearInterval(index)
+            t.setData({
+              codeStatus: true
+            })
+          }
+        }, 1000)
+     }
+  },
   // 获取验证码
   onClickGetCode() {
-    this.setData({
-      codeStatus: false
-    })
-    const t = this
-    let index = setInterval(function() {
-      t.setData({
-        times: t.data.times - 1
+    console.log('diu', this.data.ruleForm)
+    if (this.data.ruleForm.account === '') {
+      wx.showModal({
+        title: '提示',
+        content: '手机号码不能为空',
+        success(res) {
+          return
+        }
       })
-      if (t.data.times<=0) {
-        clearInterval(index)
-        t.setData({
-          times: 90,
-          codeStatus: true
-        })
+    } else {
+      let params = {
+        regticket: this.data.ruleForm.regticket,
+        account: this.data.ruleForm.account,
+        type: 'regist'
       }
-      
-    }, 1000)
+      netUtil.getRequest('dswx.authcode.send', params, this.onStart, this.onSuccessAuth, this.onFailed)
+    }
+  },
+  
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在加载',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    console.log('onSuccess', res)
+    wx.hideLoading();
+    if (res.token) {
+      wx.navigateTo({
+        url: '../map/index'
+      })
+    } else {}
+    
+
+  },
+  onFailed: function (msg) { //onFailed回调
+
+    wx.hideLoading()
+    if (msg) {
+      console.log('onFailed', msg)
+      setTimeout(function(){
+        wx.showToast({
+          title: msg.errMsg,
+          icon: 'none'
+        })
+      }, 500)
+    }
   }
+  // 网络请求 end
 })

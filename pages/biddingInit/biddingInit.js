@@ -80,7 +80,6 @@ Page({
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
-        console.log('图片集合', tempFilePaths)
         that.setData({
           attendSuccessImg: tempFilePaths[0],
           imagesArr: that.data.imagesArr.concat(tempFilePaths)
@@ -97,7 +96,6 @@ Page({
         })
         if (model.indexOf("iPhone") <= 0) {
           // that.uploadFileOpt(that.data.attendSuccessImg);
-          console.log(111111)
         } else {
           drawCanvas();
 
@@ -131,7 +129,6 @@ Page({
   },
   // 点击查看大图
   previewImg:function(e){
-    console.log(e);
     var index = e.currentTarget.dataset.index;
     var imagesArr = this.data.imagesArr;
     wx.previewImage({

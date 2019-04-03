@@ -16,14 +16,14 @@
       </view>
     </view>
   </view>
-  <map class="map" latitude="{{curPosition.latitude}}" longitude="{{curPosition.longitude}}" polyline="{{polyline}}" show-location show-compass enable-zoom enable-scroll>
+  <map class="map" latitude="{{curPosition.latitude}}" longitude="{{curPosition.longitude}}" markers="{{ list }}" bindmarkertap="onHandleMarker" polyline="{{polyline}}" scale='12' show-location show-compass enable-zoom enable-scroll>
     <cover-view class="mapTopTip" scroll-top="0" hidden="{{isShow}}">
       <cover-view class="mapTopTip-left"></cover-view>
       <cover-view class="mapTopTip-right" scroll-top="0">
-        <cover-view>南宁市西乡塘区火炬大侠县山口附近</cover-view>
+        <cover-view>{{distancenearest.address}}</cover-view>
         <cover-view class="mapTopTip-m">
-          <cover-view style="float:left; line-height: 64rpx">距离还有500米</cover-view>
-          <button bindtap="onClickHandlerStartMap" style="width: 100px; display:inline-block; float:right" size="mini">开始导航</button>
+          <cover-view style="float:left; line-height: 64rpx">距离还有{{distancenearest.distance}}米</cover-view>
+          <cover-view bindtap="onClickHandlerStartMap" class="startdh" size="mini">开始导航</cover-view>
         </cover-view>
       </cover-view>
     </cover-view>
@@ -41,9 +41,9 @@
         >
           最近的检测桩
         </button> -->
-        <cover-view bind:click="handleClickss" type="warning" size="small" class="cus-btn-map">最近的检测桩</cover-view>
+        <cover-view bindtap="handleClickDistance" type="warning" size="small" class="cus-btn-map">最近的检测桩</cover-view>
       </cover-view>
-      <cover-view class="controls-item controls-right controls-radius">
+      <cover-view class="controls-item controls-right controls-radius" bindtap="onHandleList">
         <cover-image class="icon-avatar" src="../assets/images/2.png" mode="cover"></cover-image>
       </cover-view>
     </cover-view>

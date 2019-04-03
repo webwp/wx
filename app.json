@@ -1,15 +1,16 @@
 {
   "pages":[
-    "pages/biddingservice/index",
+    "pages/index/index",
     "pages/map/index",
-    "pages/priceinfo/index",
     "pages/order/order",
+    "pages/checklist/index",
+    "pages/biddingservice/index",
+    "pages/priceinfo/index",
     "pages/pay/index",
     "pages/orderconfirm/index",
     "pages/pricedetail/index",
     "pages/addrManagement/index",
     "pages/mycar/addCar",
-    "pages/index/index",
     "pages/report/reportlist",
     "pages/report/reportdetail",
     "pages/directory/directory",
@@ -30,5 +31,10 @@
     "navigationBarBackgroundColor": "#EC6C00",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用户展示地理位置我的嘻嘻哈哈阿码"
+    }
   }
 }

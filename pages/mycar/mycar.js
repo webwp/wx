@@ -1,20 +1,58 @@
 // wxPile/pages\mycar/mycar.js
+const app = getApp()
+const { netUtil } = app.globalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    Vehicle: [
+      // {
+      //   plateNumber: '',
+      //   brand: '',
+      //   series: '',
+      //   model: '',
+      //   logo: '',
+      //   vin: ''
+      // }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    netUtil.getRequest('dswx.car.list', {}, this.onStart, this.onSuccess, this.onFailed)
+  },
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在加载···',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    
+    wx.hideLoading();
+    if (res.token) {
+      wx.navigateTo({
+        url: '../map/index'
+      })
+    } else {}
+    
 
   },
-
+  onFailed: function (msg) { //onFailed回调
+    console.log('----', msg)
+    wx.hideLoading();
+    if (msg) {
+      wx.showToast({
+        title: msg,
+      })
+    }
+  },
+  // 网络请求 end
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

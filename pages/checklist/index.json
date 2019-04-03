@@ -1,0 +1,13 @@
+{
+    "usingComponents": {
+      "i-icon": "../../dist/icon/index",
+      "i-button": "../../dist/button/index",
+      "address": "../address/address",
+      "i-row": "../../dist/row/index",
+      "i-col": "../../dist/col/index"
+    },
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#EC6C00",
+    "navigationBarTitleText": "最近检测桩",
+    "navigationBarTextStyle":"white"
+  }

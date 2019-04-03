@@ -1,5 +1,9 @@
 // wxPile/pages\component/address.js
 
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+var qqmapsdk = new QQMapWX({
+  key: 'LPDBZ-Z2Q3R-NMLW2-WRASK-CGGNO-TFFH5'
+})
 Component({
   /**
    * 组件的属性列表
@@ -46,7 +50,6 @@ Component({
     let data = this.data.data;
     this.resetRight(data);
     if (this.data.myCity) {
-      console.log('------')
       this.getCity()
     }
   },
@@ -67,10 +70,19 @@ Component({
       wx.getLocation({
         type: 'wgs84',
         success: function (res) {
-          console.log(res)
-          _this.latitude = res.latitude;
-          _this.longitude = res.longitude;
-          console.log(res)
+          _this.latitude = res.latitude
+          _this.longitude = res.longitude
+          qqmapsdk.reverseGeocoder({
+            location: {
+              latitude: res.latitude,
+              longitude: res.longitude
+            },
+            success: function(res) {
+              _this.setData({
+                myCity: res.result.address_component.city
+              })
+            }
+          })
         }
       })
     },

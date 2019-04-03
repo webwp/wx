@@ -1,35 +1,26 @@
 <!--wxPile/pages\mycar/mycar.wxml-->
 <view class="" hover-class="none" hover-stop-propagation="false">
     <view class="list" hover-class="none" hover-stop-propagation="false">
-        <view class="item clearfix" hover-class="none" hover-stop-propagation="false">
+        <view class="item clearfix" wx:for="{{Vehicle}}" wx:key="{{index}}" hover-class="none" hover-stop-propagation="false">
             <view class="cardInfo border-1px" hover-class="none" hover-stop-propagation="false">
-                <image src="http://static.jbt315.com/pic/brand/logo/140.jpg" alt="图片" class="car-logo"></image>
-                <view class="car-number">桂A099T2</view>
-                <view class="car-series">艾瑞泽7 2015款 1.5T 手动致尚版</view>
+                <image src="{{item.logo}}" alt="图片" class="car-logo"></image>
+                <view class="car-number">{{item.plateNumber}}</view>
+                <view class="car-series">{{item.brand}} {{item.series}} {{item.model}}</view>
             </view>
-            <view class="button report" hover-class="none" hover-stop-propagation="false">
+            <view class="button report" hover-class="none" hover-stop-propagation="false" data-vin="{{item.vin}}">
                 <i-icon type="createtask" />
                 检测报告
             </view>
-            <view class="button delete" hover-class="none" hover-stop-propagation="false">
+            <view class="button delete" hover-class="none" hover-stop-propagation="false" data-vin="{{item.vin}}">
                 <i-icon type="trash" />
                 删除
             </view>
         </view>
-        <view class="item clearfix" hover-class="none" hover-stop-propagation="false">
-            <view class="cardInfo border-1px" hover-class="none" hover-stop-propagation="false">
-                <image src="http://static.jbt315.com/pic/brand/logo/140.jpg" alt="图片" class="car-logo"></image>
-                <view class="car-number">桂A099T2</view>
-                <view class="car-series">艾瑞泽7 2015款 1.5T 手动致尚版</view>
-            </view>
-            <view class="button report" hover-class="none" hover-stop-propagation="false">
-                <i-icon type="createtask" />
-                检测报告
-            </view>
-            <view class="button delete" hover-class="none" hover-stop-propagation="false">
-                <i-icon type="trash" />
-                删除
-            </view>
+        <!-- 没有车辆的情况 -->
+        <view class="no-car txt-center" wx:if="{{Vehicle.length == 0}}" v-cloak style="margin-top: 150rpx">
+          <image class="" src="../assets/images/car.png" mode="aspectFit|aspectFill|widthFix" style="width: 202px; height:93px" lazy-load="false" binderror="" bindload="" />
+            
+          <view class="font-size-rpx-32 color-sub mt25">添加爱车，随时关注车辆健康</view>
         </view>
         <i-button bind:click="handleClickToAdd" type="warning" i-class="cus-btn-s">添加车辆</i-button>
     </view>

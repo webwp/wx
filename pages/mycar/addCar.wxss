@@ -209,3 +209,14 @@
     width: 10%;
     margin-bottom: 10rpx;
 }
+
+.cus-btn-s { 
+    margin: 5rem 3rem 2rem 3rem!important; 
+    border-radius: .3rem!important; 
+    background: #ec6c00!important;
+    opacity: .9 !important;
+    box-shadow: .1rem .3px 1.5rem rgba(0,0,0,.2)!important;
+    transition: .3s ease-out!important;
+    height: 2.3rem!important;
+    line-height: 2.3rem!important;
+}

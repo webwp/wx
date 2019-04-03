@@ -1,6 +1,8 @@
 // wxPile/pages\register/register.js
 import WxValidate from '../../utils/WxValidate'
 const MD5 = require('../../utils/MD5.js')
+const app = getApp()
+const { netUtil } = app.globalData
 Page({
 
   /**
@@ -24,7 +26,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    console.log(options.regticket)
     this.setData({
       ruleForm: {
         ...this.data.ruleForm,
@@ -34,6 +36,34 @@ Page({
     // 初始化表单验证
     this.initValidate()
   },
+  
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在加载',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    
+    wx.hideLoading();
+    if (res.token) {
+      wx.navigateTo({
+        url: '../map/index'
+      })
+    } else {}
+    
+
+  },
+  onFailed: function (msg) { //onFailed回调
+    console.log('----', msg)
+    wx.hideLoading();
+    if (msg) {
+      wx.showToast({
+        title: msg,
+      })
+    }
+  },
+  // 网络请求 end
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -110,7 +140,7 @@ Page({
       this.showModal(error)
       return
     }
-
+    netUtil.getRequest('swx.user.rdegist', params, this.onStart, this.onSuccess, this.onFailed)
     // 验证通过 提交数据到后台
     wx.showToast({
       title: '提交成功！！！！'
@@ -132,25 +162,47 @@ Page({
           checked: detail.current
       });
   },
+  // 验证码返回值
+  onSuccessAuth(res) {
+     wx.hideLoading()
+     if (res.sendInterval > 0) {
+        this.setData({
+          codeStatus: false,
+          times: res.sendInterval
+        })
+        
+        const t = this
+        let index = setInterval(function() {
+          t.setData({
+            times: t.data.times - 1
+          })
+          if (t.data.times<=0) {
+            clearInterval(index)
+            t.setData({
+              codeStatus: true
+            })
+          }
+        }, 1000)
+     }
+  },
   // 获取验证码
   onClickGetCode() {
-    this.setData({
-      codeStatus: false
-    })
-    const t = this
-    let index = setInterval(function() {
-      t.setData({
-        times: t.data.times - 1
+    if (this.data.ruleForm.account === '') {
+      wx.showModal({
+        title: '提示',
+        content: '手机号码不能为空',
+        success(res) {
+          return
+        }
       })
-      if (t.data.times<=0) {
-        clearInterval(index)
-        t.setData({
-          times: 90,
-          codeStatus: true
-        })
+    } else {
+      let params = {
+        regticket: this.data.ruleForm.regticket,
+        account: this.data.ruleForm.account,
+        type: 'regist'
       }
-      
-    }, 1000)
+      netUtil.getRequest('dswx.authcode.send', params, this.onStart, this.onSuccessAuth, this.onFailed)
+    }
   },
   
   /**

@@ -1,5 +1,5 @@
 const baseConfig = {
-    baseUrl: 'http://uk427x.natappfree.cc',	
+    baseUrl: 'http://192.168.0.18:5007/service/v1',	
    
     // method 请求接口
     method: {

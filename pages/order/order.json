@@ -8,7 +8,8 @@
         "i-toast": "../../dist/toast/index",
         "i-icon": "../../dist/icon/index",
         "i-row": "../../dist/row/index",
-        "i-col": "../../dist/col/index"
+        "i-col": "../../dist/col/index",
+        "i-modal": "../../dist/modal/index"
     },
     "navigationBarTitleText": "订单中心"
 }

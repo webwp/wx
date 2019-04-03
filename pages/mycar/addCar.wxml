@@ -117,5 +117,5 @@
         </view>
     </view>
     
-    
+    <i-button bind:click="handleClickToAdd" type="warning" i-class="cus-btn-s">添加车辆</i-button>
 </view>

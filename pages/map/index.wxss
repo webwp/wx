@@ -19,4 +19,11 @@
 .mapTopTip-m { font-size: 28rpx; position: absolute; bottom: 0; width: 100%;}
 
 .cus-btn-map { border-radius: 22px!important; background: #ec6c00; border-radius: 45rpx; line-height: 80rpx;padding: 0 20rpx; color:#fff;}
-
+.startdh {
+    width: 100px; display:inline-block; float:right;
+    background: #ec6c00;
+    line-height: 64rpx;
+    border-radius: 64rpx; 
+    text-align: center;
+    color: #fff;
+}
