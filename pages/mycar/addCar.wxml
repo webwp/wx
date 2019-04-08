@@ -1,10 +1,10 @@
 <!--wxPile/pages\mycar/addCar.wxml-->
-
+<i-toast id="toast" />
 <view class="input-car" hover-class="none" hover-stop-propagation="false">
     <view class="input-area" hover-class="none" hover-stop-propagation="false" bindtap="openCarList">
         <i-row i-class="font-size-rpx-32">
             <i-col span="5" i-class="col-class">车辆型号</i-col>
-            <i-col span="17" i-class="col-class color-sub car-chioce">萨芬科技示范萨芬科技示范萨芬科技示范萨芬科技示范萨芬科技示范</i-col>
+            <i-col span="17" i-class="col-class color-sub car-chioce txt-right"> {{ choiseVehicle !== '' ? choiseVehicle : choiseV }} </i-col>
             <i-col span="2" i-class="col-class txt-center"><i-icon type="enter" /></i-col>
         </i-row>
     </view>
@@ -18,7 +18,7 @@
             <view class="" wx:for="{{resCar}}" wx:for-index="key"  wx:for-item="value" hover-class="none" hover-stop-propagation="false" wx:key="{{index}}">
                 <i-panel  class="cell-panel-demo" title="{{ key }}" id="{{key}}">
                     <i-cell-group>
-                        <i-cell wx:for="{{value}}" title="" data-number="{{number}}" is-link  bindtap="openTwoDrawer" wx:key="{{index}}">
+                        <i-cell wx:for="{{value}}" title="" data-carname="{{item.name}}" data-number="{{item.number}}" is-link  bindtap="openTwoDrawer" wx:key="{{index}}">
                             <image class="" src="http://{{item.logo}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" style="width:70rpx; height:70rpx;vertical-align:middle;"/>
                             {{item.name}}
                         </i-cell>
@@ -36,16 +36,28 @@
 </i-drawer> 
  <!-- 右边抽屉 第二层-->
 <i-drawer mode="right" visible="{{showRight2}}" bind:close="toggleRight2" mask="{{false}}">
-    <view class="demo-container" bindtap="openThreeDrawer">
-        打开第三层
+    <view class="demo-container" >
+        <view class="" hover-class="none" hover-stop-propagation="false">
+            <i-row>
+                <i-col span="12" i-class="col-class" bindtap="on" bindtap="toggleRight2">关闭</i-col>
+                <i-col span="12" i-class="col-class" bindtap="openThreeDrawer">打开第三层</i-col>
+            </i-row>
+        </view>
+        <view class="" hover-class="none" hover-stop-propagation="false" data-name="卡罗拉" data-number="{{123456}}" bindtap="openThreeDrawer">
+            卡罗拉
+        </view>
+        <i-cell wx:for="{{resSeries}}" wx:key="{{index}}" title="{{item.name}}" data-name="{{item.name}}" data-number="{{item.number}}" bindtap="openThreeDrawer"></i-cell>
+        
     </view>
 </i-drawer> 
 
  <!-- 右边抽屉 第三层-->
 <i-drawer mode="right" visible="{{showRight3}}" bind:close="toggleRight3" mask="{{false}}">
-    <view class="demo-container">
-        第三层
+    <view class="demo-container" bindtap="choiseThree" data-chex="2019款 双井 全景天窗版">
+        2019款 双井 全景天窗版
     </view>
+    <i-cell wx:for="{{resModel}}" wx:key="{{index}}" title="{{item.name}}" bindtap="choiseThree" data-name="{{item.name}}" data-number="{{item.number}}" bindtap="openThreeDrawer"></i-cell>
+
 </i-drawer> 
 
 <view class="content" hover-class="none" hover-stop-propagation="false">
@@ -116,6 +128,5 @@
             </view>
         </view>
     </view>
-    
-    <i-button bind:click="handleClickToAdd" type="warning" i-class="cus-btn-s">添加车辆</i-button>
 </view>
+<i-button bind:click="handleClickSubmitAdd" type="warning" i-class="cus-btn-s">添加车辆</i-button>

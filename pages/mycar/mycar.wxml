@@ -7,11 +7,11 @@
                 <view class="car-number">{{item.plateNumber}}</view>
                 <view class="car-series">{{item.brand}} {{item.series}} {{item.model}}</view>
             </view>
-            <view class="button report" hover-class="none" hover-stop-propagation="false" data-vin="{{item.vin}}">
+            <view class="button report" hover-class="none" hover-stop-propagation="false" bindtap="onHandleToList" data-vin="{{item.vin}}">
                 <i-icon type="createtask" />
                 检测报告
             </view>
-            <view class="button delete" hover-class="none" hover-stop-propagation="false" data-vin="{{item.vin}}">
+            <view class="button delete" hover-class="none" hover-stop-propagation="false" bindtap="onHandleDelCar" data-vin="{{item.vin}}">
                 <i-icon type="trash" />
                 删除
             </view>
@@ -25,3 +25,9 @@
         <i-button bind:click="handleClickToAdd" type="warning" i-class="cus-btn-s">添加车辆</i-button>
     </view>
 </view>
+
+<i-modal title="删除确认" visible="{{ visibleModal }}" actions="{{ modalActions }}" bind:click="handleClickmodal">
+    <view>删除后无法恢复,确认删除？</view>
+</i-modal>
+<i-toast id="toast" />
+<i-message id="message" />

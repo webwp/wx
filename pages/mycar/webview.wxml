@@ -1,0 +1,6 @@
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view wx:if="{{url === ''}}" class="txt-center" hover-class="none" hover-stop-propagation="false">
+        外链为空
+    </view>
+    <web-view wx:if="{{url !== ''}}" src="{{url}}" bindmessage=""></web-view>
+</view> 

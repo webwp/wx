@@ -3,6 +3,10 @@
     "usingComponents": {
         "i-card": "../../dist/card/index",
         "i-icon": "../../dist/icon/index",
-        "i-button": "../../dist/button/index"
-    }
+        "i-button": "../../dist/button/index",
+        "i-modal": "../../dist/modal/index",
+        "i-message": "../../dist/message/index",
+        "i-toast": "../../dist/toast/index"
+    },
+    "navigationBarTitleText": "我的车辆"
 }

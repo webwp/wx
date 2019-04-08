@@ -1,12 +1,12 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const { netUtil } = app.globalData
 var wxGetSetting = require('../../utils/wxGetSetting')
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 var qqmapsdk = new QQMapWX({
-  key: 'LPDBZ-Z2Q3R-NMLW2-WRASK-CGGNO-TFFH5'
+  key: 'XU5BZ-F5MWD-ZWO4N-P4C4R-3OYOJ-P3FHS'
 })
-const { netUtil } = app.globalData
 Page({
   data: {
     curPosition: {
@@ -106,42 +106,40 @@ Page({
     ]
   },
   onShow () {
-    console.log('onShow', this, netUtil)
-    let params = {
-      "city":"南宁市",
-      "lng":108.33,
-      "lat":22.84
-    }
+    // console.log('onShow', this, netUtil)
+    // this.getGeocoder()
     // netUtil.postRequest('/site/querySiteListInfo', params, this.onStart, this.onSuccess, this.onFailed)
     if (this.data.cityInfo.city === '') {
-      wx.authorize({
-        scope: 'scope.userLocation',
-        success(res) {
-          console.log("sdfsfsasdfa", res)
-          // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+      let t = this
+      // wx.authorize({
+      //   scope: 'scope.userLocation',
+      //   success(res) {
+      //     console.log("sdfsfsasdfa", res)
+      //     // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
           
-      this.wxGetLocation()
-        }
-      })
+      //     t.wxGetLocation()
+      //   }
+      // })
+      t.wxGetLocation()
     } else {
       this.getGeocoder()
     }
   },
   // 网络请求 start
-  onStart: function () { //onStart回调
+  onStartSite: function () { //onStart回调
     wx.showLoading({
       title: '正在加载',
     })
   },
-  onSuccess: function (res) { //onSuccess回调
+  onSuccessSite: function (res) { //onSuccess回调
     wx.hideLoading();
     console.log('后端数据', res)
     this.setData({
-      // jokeList: res.result.data //请求结果数据
+      list: res.data.list
     })
 
   },
-  onFailed: function (msg) { //onFailed回调
+  onFailedSite: function (msg) { //onFailed回调
     wx.hideLoading();
     if (msg) {
       wx.showToast({
@@ -207,7 +205,7 @@ Page({
     this.formSubmit(positionStr)
   },
   onReady () {
-    console.log('onReady', this)
+    // console.log('onReady', this)
   },
   onHide () {
     console.log('onHide', this)
@@ -215,6 +213,36 @@ Page({
   onUnload () {
     console.log('onUnload', this)
   },
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在加载',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    
+    wx.hideLoading();
+    if (res.regticket) {
+      wx.navigateTo({
+        url: '../login/login?regticket=' + res.regticket
+      })
+    } else {}
+    
+
+  },
+  onFailed: function (msg) { //onFailed回调
+    console.log('----', msg)
+    wx.navigateTo({
+      url: '../map/index'
+    })
+    wx.hideLoading();
+    if (msg) {
+      // wx.showToast({
+      //   title: msg,
+      // })
+    }
+  },
+  // 网络请求 end
   // 获取当前位置
   wxGetLocation () {
     // 判断是否有定位权限
@@ -230,16 +258,28 @@ Page({
             longitude: res.longitude
           }
         })
+
+        let params = {
+          lng: res.longitude,
+          lat: res.latitude
+        }
+        console.log('--', that.data.curPosition)
         qqmapsdk.reverseGeocoder({
           location: that.data.curPosition,
           success: function(res) {
-            console.log('地址你接戏',res)
+            // console.log('地址你接戏',res)
             const { result } = res
             const { address_component } = result
             that.setData({
               cityInfo: address_component
             })
-
+            netUtil.getRequest('dswx.near.site', params, that.onStartSite, that.onSuccessSite, that.onFailedSite)
+          },
+          fail: function(error) {
+            console.error(error);
+          },
+          complete: function(res) {
+            console.log(res);
           }
         })
         console.log(that)
@@ -248,11 +288,67 @@ Page({
         console.log(err)
       }
     })
+    console.log('修为')
   },
   // 点击最近检测桩
   handleClickDistance () {
     this.setData({
       isShow: !this.data.isShow
+    })
+    let params = {
+      lng: this.data.curPosition.longitude,
+      lat: this.data.curPosition.latitude,
+      city: this.data.cityInfo.city
+    }
+    console.log(params)
+    // 请求最近检测桩
+    netUtil.getRequest('dswx.site.navigation', params, () => {
+      wx.showLoading()
+    }, (res) => {
+      this.setData({
+        distancenearest: {
+          address: res.data.SiteDistance.address,
+          distance: res.data.SiteDistance.distance,
+          latitude: '',
+          longitude: ''
+        }
+      })
+      let to = {
+        latitude: '',
+        longitude: ''
+      }
+      qqmapsdk.direction({
+        mode: 'driving',
+        from: this.data.curPosition,
+        to: to,
+        success: (res) => {
+          console.log(res);
+          var ret = res;
+          var coors = ret.result.routes[0].polyline, pl = [];
+          //坐标解压（返回的点串坐标，通过前向差分进行压缩）
+          var kr = 1000000;
+          for (var i = 2; i < coors.length; i++) {
+            coors[i] = Number(coors[i - 2]) + Number(coors[i]) / kr;
+          }
+          //将解压后的坐标放入点串数组pl中
+          for (var i = 0; i < coors.length; i += 2) {
+            pl.push({ latitude: coors[i], longitude: coors[i + 1] })
+          }
+          console.log(pl)
+          //设置polyline属性，将路线显示出来,将解压坐标第一个数据作为起点
+          _this.setData({
+            latitude:pl[0].latitude,
+            longitude:pl[0].longitude,
+            polyline: [{
+              points: pl,
+              color: '#FF0000DD',
+              width: 4
+            }]
+          })
+        }
+      })
+    }, (err) => {
+      console.log(err)
     })
     console.log(this.data.isShow)
   },

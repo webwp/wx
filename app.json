@@ -2,6 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/map/index",
+    "pages/user/user",
+    "pages/mycar/addCar",
+    "pages/mycar/mycar",
+    "pages/mycar/webview",
     "pages/order/order",
     "pages/checklist/index",
     "pages/biddingservice/index",
@@ -10,7 +14,6 @@
     "pages/orderconfirm/index",
     "pages/pricedetail/index",
     "pages/addrManagement/index",
-    "pages/mycar/addCar",
     "pages/report/reportlist",
     "pages/report/reportdetail",
     "pages/directory/directory",
@@ -22,8 +25,6 @@
     "pages/order/orderdetail",
     "pages/login/login",
     "pages/register/register",
-    "pages/mycar/mycar",
-    "pages/user/user",
     "pages/logs/logs"
   ],
   "window":{
@@ -32,9 +33,14 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"white"
   },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
   "permission": {
     "scope.userLocation": {
-      "desc": "用户展示地理位置我的嘻嘻哈哈阿码"
+     "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "navigateToMiniProgramAppIdList": ["wx0e57b1ff0aaeb234"]
 }

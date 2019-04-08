@@ -13,6 +13,10 @@
   <view class="pagetext" hover-class="none" hover-stop-propagation="false">
     <image class="" src="http://wx.jbtcloud.cn/static/img/logo-new.65a27de.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
     广西金奔腾汽车科技有限公司
+    <view class="" style="padding: 20rpx 50rpx" hover-class="none" hover-stop-propagation="false">
+      <button wx:if="{{!hasAuthorization}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" type="primary" size="mini "> 小程序授权 </button>
+    </view>
+      
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 开始使用 </button> -->
   </view>
 </view>

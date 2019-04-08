@@ -1,13 +1,22 @@
 // wxPile/pages\mycar/addCar.js
 import carData from '../../utils/car'
 let car = carData['data']
-console.log(car)
+const { $Toast } = require('../../dist/base/index')
+const app = getApp()
+const { netUtil } = app.globalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    choiseVehicle: '',
+    choiseV: '请选择',
+    addNewCar: {
+      plateNumber: '',
+      vehicleNumber: '',
+      vin: ''
+    },
     carId: ['', '', '', '', '', '', '', ''], // 车牌号
     focusIndex: 0, // 当前输入的位数
 
@@ -26,6 +35,8 @@ Page({
     showRight3: false,
     numArrStatus: true,
     resCar: [],
+    resSeries: [],
+    resModel: [],
     Letter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
     toView: 'a'
   },
@@ -77,7 +88,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    netUtil.getRequest('dswx.car.brand.list', {}, this.onStartBrand, this.onSuccessBrand, this.onFailed)
   },
 
   /**
@@ -93,6 +104,39 @@ Page({
   onUnload: function () {
 
   },
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在添加···',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    wx.hideLoading()
+    if (res.data.status === '10000') {
+      $Toast({
+        content: '添加成功',
+        type: 'success'
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      $Toast({
+        content: '添加失败',
+        type: 'error'
+      })
+    }
+  },
+  onFailed: function (msg) { //onFailed回调
+    console.log('----', msg.errMsg)
+    wx.hideLoading();
+    if (msg) {
+      wx.showToast({
+        title: msg.errMsg,
+      })
+    }
+  },
+  // 网络请求 end
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -150,7 +194,43 @@ Page({
       letterStatus: this.data.letterStatus !== 0,
       numArrStatus: this.data.focusIndex > 1 ? false : true
     })
-    console.log(this.data.carId)
+    console.log(this.data.carId.join(''))
+    let plateNumber = this.data.carId.join('')
+    this.setData({
+      addNewCar:{
+        ...this.data.addNewCar,
+        plateNumber: plateNumber
+      }
+    })
+    
+  },
+  // 提交添加车辆信息
+  handleClickSubmitAdd() {
+     this.setData({
+       addNewCar: {
+         ...this.data.addNewCar,
+         vehicleNumber: this.data.choiseVehicle
+       }
+     })
+     let { plateNumber, vehicleNumber } = this.data.addNewCar
+     if (vehicleNumber === '') {
+       $Toast({
+         content: '请选择车型',
+         type: 'warning'
+       })
+       return
+     }
+     if (plateNumber.length !== 7) {
+       $Toast({
+         content: '车牌号错误',
+         type: 'warning'
+       })
+       return
+     }
+     console.log(this.data.addNewCar)
+     return
+     netUtil.getRequest('dswx.car.create', this.data.addNewCar, this.onStart, this.onSuccessDetail, this.onFailed)
+
   },
   // 输入新能源位数时的操作
   responseLastCarId () {
@@ -184,20 +264,67 @@ Page({
           showRight3: !this.data.showRight3
       });
   },
-  openTwoDrawer() {
-    
+  openTwoDrawer(e) {
+    let {carname, number} = e.target.dataset
+    let params = {
+      brand: number
+    }
+    netUtil.getRequest('dswx.car.series.list', params, this.onStartBrand, this.onSuccessSeries, this.onFailed)
+    console.log('carname', carname)
+    this.setData({
+      choiseVehicle: '',
+    })
+    this.setData({
+      showRight2: !this.data.showRight2,
+      choiseVehicle: '',
+      choiseVehicle: this.data.choiseVehicle + ' ' + carname
+    })
+  },
+  toggleRight2() {
     this.setData({
       showRight2: !this.data.showRight2
     })
   },
-  openThreeDrawer() {
-    
+  openThreeDrawer(e) {
+    let { name, number } = e.target.dataset,
+        params = {
+          series: number
+        }
+    netUtil.getRequest('dswx.car.series.list', params, this.onStartBrand, this.onSuccessModel, this.onFailed)    
     this.setData({
-      showRight3: !this.data.showRight3
+      showRight3: !this.data.showRight3,
+      choiseVehicle: this.data.choiseVehicle + ' ' + name
     })
   },
-  getCarArr() {
-    let Objects = {}, t = this
+  choiseThree(e) {
+    let { name, number } = e.target.dataset
+    
+    this.setData({
+      showRight1: !this.data.showRight3,
+      showRight2: !this.data.showRight3,
+      showRight3: !this.data.showRight3,
+      choiseVehicle: this.data.choiseVehicle + ' ' + name
+    })
+  },
+  onStartBrand() {},
+  onSuccessBrand(res) {
+    let { Brand } = res.data
+    this.getCarArr(Brand)
+  },
+  onSuccessSeries(res) {
+    let { Series } = res.data
+    this.setData({
+      resSeries: Series
+    })
+  },
+  onSuccessModel(res) {
+    let { Model } = res.data
+    this.setData({
+      resModel: Model
+    })
+  },
+  getCarArr(arr) {
+    let Objects = {}, t = this, resArr = arr || car
     this.data.Letter.forEach((item) => {
       Objects[item] = car.filter(res => {
         return item === res.initial

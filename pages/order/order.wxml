@@ -15,7 +15,7 @@
                 <i-col span="8" wx:if="{{ item.orderState !== 30 ? false : true }}" i-class="col-class txt-right font-size-rpx color-warning">商家已接单</i-col>
                 <i-col span="8" wx:if="{{ item.orderState !== 40 ? false : true }}" i-class="col-class txt-right font-size-rpx color-success">已完成</i-col>
             </i-row>
-            <view class="font-size-rpx tab-list-content" hover-class="none" hover-stop-propagation="false" bindtap="onHandleOrderDetail">
+            <view class="font-size-rpx tab-list-content" hover-class="none" hover-stop-propagation="false" data-item="{{item}}" bindtap="onHandleOrderDetail">
                 <i-row i-class="">
                     <i-col span="15" i-class="col-class font-w">{{ item.title }}</i-col>
                     <i-col span="9" i-class="col-class txt-center">{{ item.price }}</i-col>

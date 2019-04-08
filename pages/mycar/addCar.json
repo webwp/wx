@@ -7,7 +7,10 @@
         "i-panel": "../../dist/panel/index",
         "i-icon": "../../dist/icon/index",
         "i-row": "../../dist/row/index",
-        "i-col": "../../dist/col/index"
+        "i-col": "../../dist/col/index",
+        "i-toast": "../../dist/toast/index",
+        "i-button": "../../dist/button/index",
+        "i-message": "../../dist/message/index"
         
     },
     "navigationBarTitleText": "添加车辆"

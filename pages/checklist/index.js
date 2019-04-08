@@ -67,7 +67,7 @@ Page({
       }
     })
     console.log('请求后端参数', this.data.pageRequest)
-    netUtil.postRequest('', this.data.pageRequest, this.onStart, this.onSuccess, this.onFailed)
+    netUtil.postRequest('dswx.site.list', this.data.pageRequest, this.onStart, this.onSuccess, this.onFailed)
   },
   
   // 网络请求 start
@@ -81,6 +81,7 @@ Page({
     console.log('后端数据', res)
     this.setData({
       // jokeList: res.result.data //请求结果数据
+      list: res.data.List
     })
 
   },

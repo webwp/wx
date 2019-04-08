@@ -1,0 +1,21 @@
+<!--wxPile/pages\mycar/reportlist.wxml-->
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="list" hover-class="none" hover-stop-propagation="false">
+        <view class="item clearfix" wx:for="{{result.data}}" wx:key="{{index}}" hover-class="none" hover-stop-propagation="false">
+            <view class="" bindtap="onHandleToDetail" data-sn="{{item.sn}}" hover-class="none" hover-stop-propagation="false">
+                <view class="cardInfo border-1px" hover-class="none" hover-stop-propagation="false">
+                    <view class="car-number">ddd车况良好{{item.sn}}</view>
+                    <view class="car-series">{{item.createTime}}</view>
+                </view>
+                <view class="" hover-class="none" hover-stop-propagation="false">
+                    共检测 {{item.systemCount}} 个系统， {{item.faultCount}} 个系统存在风险
+                </view>
+            </view>
+              
+        </view>
+        <!-- 没有车辆的情况 -->
+        <view class="no-car txt-center" wx:if="{{Vehicle.length == 0}}" v-cloak style="margin-top: 150rpx">
+          <view class="font-size-rpx-32 color-sub mt25">没有检测报告信息</view>
+        </view>
+    </view>
+</view>

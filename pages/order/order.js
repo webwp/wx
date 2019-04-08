@@ -1,5 +1,7 @@
 // wxPile/pages\order/order.js
-const { $Toast } = require('../../dist/base/index');
+const { $Toast } = require('../../dist/base/index')
+const app = getApp()
+const { netUtil } = app.globalData
 Page({
 
   /**
@@ -134,8 +136,55 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      requestParams: {
+        ...this.data.requestParams,
+        userName: options.userName || ''
+      }
+    })
+    netUtil.getRequest('dswx.order.list', this.data.requestParams, (start) => {
+      wx.showLoading()
+    },(res) => {
+      this.setData({
+        list: res.data.list
+      })
+    }, (err) => {
+      console.log(err)
+    })
   },
+  // 网络请求 start
+  onStart: function () { //onStart回调
+    wx.showLoading({
+      title: '正在添加···',
+    })
+  },
+  onSuccess: function (res) { //onSuccess回调
+    wx.hideLoading()
+    if (res.data.status === '10000') {
+      $Toast({
+        content: '添加成功',
+        type: 'success'
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      $Toast({
+        content: '添加失败',
+        type: 'error'
+      })
+    }
+  },
+  onFailed: function (msg) { //onFailed回调
+    console.log('----', msg.errMsg)
+    wx.hideLoading();
+    if (msg) {
+      wx.showToast({
+        title: msg.errMsg,
+      })
+    }
+  },
+  // 网络请求 end
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -186,9 +235,25 @@ Page({
 
   },
   // 详情页面
-  onHandleOrderDetail() {
+  onHandleOrderDetail(e) {
+    console.log(e)
+    let item = e.currentTarget.dataset.item,
+    params = {
+      userName: this.data.requestParams.userName,
+      orderNum: item.orderNum,
+      gps: '',
+      num: ''
+    }, paramsToString = ''
+    Object.keys(params).forEach((item, index) => {
+       if (index === 0) {
+         paramsToString += item + "=" + params[item]
+       } else if (params[item] !== '') {
+         paramsToString += '&' + item + "=" + params[item]
+       }
+    })
+    console.log('paramsToString', paramsToString)
     wx.navigateTo({
-      url: '../../pages/order/orderdetail'
+      url: '../../pages/order/orderdetail?' + paramsToString
     })
   },
   // 调用手机拨号
